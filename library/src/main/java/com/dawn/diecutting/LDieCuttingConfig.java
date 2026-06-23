@@ -60,6 +60,26 @@ public final class LDieCuttingConfig {
     /** 刀压补偿 */
     private int pressureCompensate = 0;
 
+    // ==================== 打印切割一体机参数 ====================
+
+    /** 轮廓扩大像素值（1~4），默认 3 */
+    private int expandVal = 3;
+
+    /** 肖像切割轮廓缩小值（mm），默认 2.0 */
+    private float shrinkVal = 2.0f;
+
+    /** 切割完成通知百分比，默认 80 */
+    private int finishPercent = 80;
+
+    /** 物料类型，默认软纸 */
+    private int materialType = LDieCuttingConst.MATERIAL_SOFT_PAPER;
+
+    /** 相纸尺寸，默认 6x4 */
+    private int paperSize = LDieCuttingConst.SIZE_64;
+
+    /** 是否为肖像照 */
+    private boolean isProfile = false;
+
     // ==================== 构造方法 ====================
 
     public LDieCuttingConfig() {
@@ -211,6 +231,62 @@ public final class LDieCuttingConfig {
         return this;
     }
 
+    // ==================== 打印切割一体机参数 Getter/Setter ====================
+
+    public int getExpandVal() {
+        return expandVal;
+    }
+
+    public LDieCuttingConfig setExpandVal(int expandVal) {
+        this.expandVal = Math.max(1, Math.min(4, expandVal));
+        return this;
+    }
+
+    public float getShrinkVal() {
+        return shrinkVal;
+    }
+
+    public LDieCuttingConfig setShrinkVal(float shrinkVal) {
+        this.shrinkVal = shrinkVal;
+        return this;
+    }
+
+    public int getFinishPercent() {
+        return finishPercent;
+    }
+
+    public LDieCuttingConfig setFinishPercent(int finishPercent) {
+        this.finishPercent = Math.max(0, Math.min(100, finishPercent));
+        return this;
+    }
+
+    public int getMaterialType() {
+        return materialType;
+    }
+
+    public LDieCuttingConfig setMaterialType(int materialType) {
+        this.materialType = materialType;
+        return this;
+    }
+
+    public int getPaperSize() {
+        return paperSize;
+    }
+
+    public LDieCuttingConfig setPaperSize(int paperSize) {
+        this.paperSize = paperSize;
+        return this;
+    }
+
+    public boolean isProfile() {
+        return isProfile;
+    }
+
+    public LDieCuttingConfig setProfile(boolean profile) {
+        isProfile = profile;
+        return this;
+    }
+
     // ==================== 工具方法 ====================
 
     /**
@@ -238,6 +314,12 @@ public final class LDieCuttingConfig {
         copy.cutCompensateY = this.cutCompensateY;
         copy.cutCompensateY1 = this.cutCompensateY1;
         copy.pressureCompensate = this.pressureCompensate;
+        copy.expandVal = this.expandVal;
+        copy.shrinkVal = this.shrinkVal;
+        copy.finishPercent = this.finishPercent;
+        copy.materialType = this.materialType;
+        copy.paperSize = this.paperSize;
+        copy.isProfile = this.isProfile;
         return copy;
     }
 
@@ -254,6 +336,12 @@ public final class LDieCuttingConfig {
                 ", cutComp=(" + cutCompensateX + "," + cutCompensateX1 +
                 "," + cutCompensateY + "," + cutCompensateY1 + ")" +
                 ", pressureComp=" + pressureCompensate +
+                ", expandVal=" + expandVal +
+                ", shrinkVal=" + shrinkVal + "mm" +
+                ", finishPercent=" + finishPercent + "%" +
+                ", material=" + LDieCuttingConst.getMaterialName(materialType) +
+                ", size=" + LDieCuttingConst.getSizeName(paperSize) +
+                ", profile=" + isProfile +
                 '}';
     }
 }

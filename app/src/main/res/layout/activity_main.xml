@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -9,7 +13,7 @@
         android:id="@+id/tv_status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="状态: 未连接"
+        android:text="状态: 未初始化"
         android:textSize="18sp"
         android:textStyle="bold"
         android:padding="8dp" />
@@ -26,21 +30,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="8dp">
 
         <Button
             android:id="@+id/btn_connect"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="连接" />
+            android:text="初始化" />
 
         <Button
             android:id="@+id/btn_disconnect"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="断开" />
+            android:text="释放" />
 
     </LinearLayout>
 
@@ -55,14 +59,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="开始" />
+            android:text="测试切割" />
 
         <Button
             android:id="@+id/btn_stop"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="停止" />
+            android:text="取消切割" />
 
     </LinearLayout>
 
@@ -77,30 +81,58 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="暂停" />
+            android:text="出纸" />
 
         <Button
             android:id="@+id/btn_resume"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="恢复" />
+            android:text="获取状态" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/btn_emergency"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="查询参数" />
+
+        <Button
+            android:id="@+id/btn_config"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="应用配置" />
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn_emergency"
+        android:id="@+id/btn_send_plt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="紧急停止"
-        android:textColor="#FF0000" />
+        android:text="发送 PLT 切割数据"
+        android:backgroundTint="#4CAF50" />
 
-    <Button
-        android:id="@+id/btn_config"
+    <TextView
+        android:id="@+id/tv_log"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="应用配置 (压力50t 速度60 深度0.3mm)" />
+        android:text="日志：\n"
+        android:textSize="12sp"
+        android:padding="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#F5F5F5"
+        android:fontFamily="monospace" />
 
 </LinearLayout>
+
+</ScrollView>

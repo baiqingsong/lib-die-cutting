@@ -137,6 +137,8 @@ machine.release();
 | `STATE_PAUSED` | 3 | 已暂停 |
 | `STATE_EMERGENCY` | 4 | 急停状态 |
 | `STATE_ERROR` | 5 | 故障状态 |
+| `STATE_REBOOTING` | 6 | 复位中 |
+| `STATE_CAN_PRINT` | 7 | 可继续打印 |
 
 | 属性 | 类型 | 说明 |
 |------|------|------|
@@ -203,4 +205,94 @@ PD200,300;     切割到 (200,300)
 ...
 PU0,0;         抬笔移动到 (0,0)
 ```
+
+---
+
+## 打印切割一体机 API（LDieCuttingPrintSDK）
+
+`com.dawn.diecutting.LDieCuttingPrintSDK` 打印切割一体机控制类（单例）
+
+### 初始化
+
+| 方法 | 说明 |
+|------|------|
+| `init(Context, apiKey)` | 使用默认配置初始化 |
+| `init(Context, apiKey, config)` | 使用自定义配置初始化 |
+| `release()` | 释放 SDK 资源 |
+| `isInitialized()` | 是否已初始化 |
+| `getSDK()` | 获取底层 MainSDK 实例 |
+
+### 切割操作
+
+| 方法 | 说明 |
+|------|------|
+| `processCut(Bitmap, fileName)` | 普通切割图片 |
+| `processCut(Bitmap, fileName, dpi)` | 按指定 DPI 切割图片 |
+| `processProfileCut(Bitmap, fileName)` | 肖像照切割 |
+| `processPrintOnly()` | 仅打印（不切割） |
+| `process(InputInfo)` | 使用自定义 InputInfo 操作 |
+
+### 使用示例
+
+```java
+LDieCuttingPrintSDK printSDK = LDieCuttingPrintSDK.getInstance();
+printSDK.init(context, "your-api-key");
+
+// 设置回调
+printSDK.setCallback(new LDieCuttingCallback() {
+    @Override public void onStatusChanged(LDieCuttingStatus s) {
+        Log.d("TAG", "状态: " + s.getStateName());
+    }
+    @Override public void onProgressUpdated(float p, int c, int t) {}
+    @Override public void onError(int code, String msg) {
+        Log.e("TAG", LDieCuttingConst.getErrorDescription(code));
+    }
+});
+
+// 切割图片
+Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.test);
+printSDK.processCut(bitmap, "test.png");
+
+// 释放
+printSDK.release();
+```
+
+---
+
+## 常量参考（LDieCuttingConst）
+
+### 操作类型
+
+| 常量 | 值 | 说明 |
+|------|------|------|
+| `ACTION_CUT` | 0 | 普通切割 |
+| `ACTION_PRINT_ONLY` | 1 | 仅打印 |
+| `ACTION_PAPER_BACK` | 2 | 退纸 |
+| `ACTION_PAPER_FORWARD` | 3 | 进纸 |
+| `ACTION_MOVE_LEFT_RIGHT` | 4 | 左右移动 |
+| `ACTION_TEST_CUT` | 5 | 测试切割 |
+
+### 物料类型
+
+| 常量 | 值 | 说明 |
+|------|------|------|
+| `MATERIAL_SOFT_PAPER` | 0 | 软纸 |
+| `MATERIAL_HARD_PAPER` | 1 | 硬纸 |
+| `MATERIAL_PHOTO_PAPER` | 2 | 相纸 |
+| `MATERIAL_STICKER` | 3 | 不干胶 |
+| `MATERIAL_CUSTOM` | 4 | 自定义 |
+
+### 错误码
+
+| 常量 | 值 | 说明 |
+|------|------|------|
+| `ERROR_SENSOR_COVERED` | 1001 | 前感应器被遮挡 |
+| `ERROR_NO_PHOTO` | 1002 | 后感应器检测不到相片 |
+| `ERROR_DISCONNECT` | 1003 | USB 连接失败 |
+| `ERROR_NO_USB_DEVICE` | 1004 | 未发现 USB HID 设备 |
+| `ERROR_NO_MARKER` | 1005 | 无法检测标记点 |
+| `ERROR_NO_CUT_DATA` | 1006 | 无法生成切割数据 |
+| `ERROR_EXECUTE_COMMAND_FAIL` | 1007 | 无法发送指令 |
+| `ERROR_EXECUTE_PLT_FAIL` | 1008 | 无法发送 PLT 数据 |
+| `ERROR_CUT_EXCEPTION` | 1009 | 切割异常终止 |
 

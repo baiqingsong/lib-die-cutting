@@ -53,6 +53,10 @@ afterEvaluate {
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
 
-    // 模切机厂商 SDK（汇森智诺 CutSDKManager）
-    implementation files('libs/CutSDKManager.aar')
+    // 模切机厂商 SDK - 串口刻绘版（CutSDKManager，纯切割/刻绘机）
+    api files('libs/CutSDKManager.aar')
+
+    // 打印切割一体机 SDK（CutSDK.aar，含 MainSDK/InputInfo/ReturnInfo）
+    // 需要从厂商获取 CutSDK.aar 放入 libs 目录，然后取消下面注释：
+    // implementation files('libs/CutSDK.aar')
 }

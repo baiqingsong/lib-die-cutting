@@ -57,8 +57,8 @@ public final class LDieCuttingMachine {
     /** 默认波特率 */
     private static final int DEFAULT_BAUD_RATE = 3000;
 
-    /** 同步调用超时时间（毫秒） */
-    private static final long SYNC_TIMEOUT_MS = 5000;
+    /** 同步调用超时时间（毫秒），避免主线程长时间阻塞 */
+    private static final long SYNC_TIMEOUT_MS = 2000;
 
     private Context appContext;
     private CutSDKManager sdk;

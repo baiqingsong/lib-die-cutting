@@ -28,8 +28,25 @@ public final class LDieCuttingStatus {
     /** 故障状态 */
     public static final int STATE_ERROR = 5;
 
-    /** 正在复位/校准 */
-    public static final int STATE_CALIBRATING = 6;
+    /** 复位中 */
+    public static final int STATE_REBOOTING = 6;
+
+    /** 可继续打印（前一张已完成 80%） */
+    public static final int STATE_CAN_PRINT = 7;
+
+    // ==================== 子状态码（SDK 原始返回） ====================
+
+    /** 状态正常 */
+    public static final int SUB_OK = LDieCuttingConst.STATUS_OK;
+
+    /** 启动下位机失败 */
+    public static final int SUB_REBOOT_FAIL = LDieCuttingConst.STATUS_REBOOT_FAIL;
+
+    /** 启动下位机成功 */
+    public static final int SUB_REBOOT_OK = LDieCuttingConst.STATUS_REBOOT_OK;
+
+    /** SDK 已释放 */
+    public static final int SUB_RELEASE = LDieCuttingConst.STATUS_RELEASE;
 
     // ==================== 状态字段 ====================
 
@@ -151,12 +168,12 @@ public final class LDieCuttingStatus {
     // ==================== 工具方法 ====================
 
     /**
-     * 判断是否处于运行状态（切割中或暂停中）
+     * 判断是否处于运行状态（切割中、暂停中或可继续打印）
      *
      * @return true 表示正在运行
      */
     public boolean isRunning() {
-        return state == STATE_CUTTING || state == STATE_PAUSED;
+        return state == STATE_CUTTING || state == STATE_PAUSED || state == STATE_CAN_PRINT;
     }
 
     /**
@@ -165,7 +182,7 @@ public final class LDieCuttingStatus {
      * @return true 表示有故障
      */
     public boolean isError() {
-        return state == STATE_ERROR || state == STATE_EMERGENCY;
+        return state == STATE_ERROR || state == STATE_EMERGENCY || state == STATE_REBOOTING;
     }
 
     /**
@@ -196,8 +213,10 @@ public final class LDieCuttingStatus {
                 return "急停";
             case STATE_ERROR:
                 return "故障";
-            case STATE_CALIBRATING:
-                return "校准中";
+            case STATE_REBOOTING:
+                return "复位中";
+            case STATE_CAN_PRINT:
+                return "可继续打印";
             default:
                 return "未知";
         }
