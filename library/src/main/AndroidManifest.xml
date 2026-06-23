@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dawn.diecutting">
+
+    <!--
+        本库不需要声明任何权限。
+        模切机通信由使用方负责权限申请（如蓝牙、网络等）。
+    -->
+
+</manifest>
