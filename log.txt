@@ -1,73 +1,220 @@
---------- beginning of main
---------- beginning of kernel
---------- beginning of system
---------- beginning of crash
----------------------------- PROCESS STARTED (4827) for package com.dawn.libdiecutting ----------------------------
-2026-06-24 10:06:09.988  4827-4827  ziparchive              com.dawn.libdiecutting               W  Unable to open '/data/app/~~hyeQ4b4pVEXXtduNtt_akw==/com.dawn.libdiecutting-28h-BrlCMz0pqLVgyu5dzw==/base.dm': No such file or directory
-2026-06-24 10:06:09.988  4827-4827  ziparchive              com.dawn.libdiecutting               W  Unable to open '/data/app/~~hyeQ4b4pVEXXtduNtt_akw==/com.dawn.libdiecutting-28h-BrlCMz0pqLVgyu5dzw==/base.dm': No such file or directory
-2026-06-24 10:06:10.093  4827-4827  nativeloader            com.dawn.libdiecutting               D  Configuring clns-6 for other apk /data/app/~~hyeQ4b4pVEXXtduNtt_akw==/com.dawn.libdiecutting-28h-BrlCMz0pqLVgyu5dzw==/base.apk. target_sdk_version=34, uses_libraries=, library_path=/data/app/~~hyeQ4b4pVEXXtduNtt_akw==/com.dawn.libdiecutting-28h-BrlCMz0pqLVgyu5dzw==/lib/arm64:/data/app/~~hyeQ4b4pVEXXtduNtt_akw==/com.dawn.libdiecutting-28h-BrlCMz0pqLVgyu5dzw==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.dawn.libdiecutting
-2026-06-24 10:06:10.111  4827-4827  GraphicsEnvironment     com.dawn.libdiecutting               V  Currently set values for:
-2026-06-24 10:06:10.111  4827-4827  GraphicsEnvironment     com.dawn.libdiecutting               V    angle_gl_driver_selection_pkgs=[]
-2026-06-24 10:06:10.111  4827-4827  GraphicsEnvironment     com.dawn.libdiecutting               V    angle_gl_driver_selection_values=[]
-2026-06-24 10:06:10.112  4827-4827  GraphicsEnvironment     com.dawn.libdiecutting               V  ANGLE GameManagerService for com.dawn.libdiecutting: false
-2026-06-24 10:06:10.112  4827-4827  GraphicsEnvironment     com.dawn.libdiecutting               V  com.dawn.libdiecutting is not listed in per-application setting
-2026-06-24 10:06:10.112  4827-4827  GraphicsEnvironment     com.dawn.libdiecutting               V  Neither updatable production driver nor prerelease driver is supported.
-2026-06-24 10:06:10.145  4827-4850  vulkan                  com.dawn.libdiecutting               D  searching for layers in '/data/app/~~hyeQ4b4pVEXXtduNtt_akw==/com.dawn.libdiecutting-28h-BrlCMz0pqLVgyu5dzw==/lib/arm64'
-2026-06-24 10:06:10.146  4827-4850  vulkan                  com.dawn.libdiecutting               D  searching for layers in '/data/app/~~hyeQ4b4pVEXXtduNtt_akw==/com.dawn.libdiecutting-28h-BrlCMz0pqLVgyu5dzw==/base.apk!/lib/arm64-v8a'
-2026-06-24 10:06:10.148  4827-4850  mali_so                 com.dawn.libdiecutting               I  [File] : hardware/arm/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1403; [Func] : base_context_deal_with_version_affairs_rk_ext;
+---------------------------- PROCESS STARTED (5560) for package com.dawn.libdiecutting ----------------------------
+2026-06-24 10:22:32.271  5560-5560  ziparchive              com.dawn.libdiecutting               W  Unable to open '/data/app/~~t1gdtRXEErNirr1vgg2AXg==/com.dawn.libdiecutting-7XJrnFpQ3CIByxBCYosw3w==/base.dm': No such file or directory
+2026-06-24 10:22:32.271  5560-5560  ziparchive              com.dawn.libdiecutting               W  Unable to open '/data/app/~~t1gdtRXEErNirr1vgg2AXg==/com.dawn.libdiecutting-7XJrnFpQ3CIByxBCYosw3w==/base.dm': No such file or directory
+2026-06-24 10:22:32.379  5560-5560  nativeloader            com.dawn.libdiecutting               D  Configuring clns-6 for other apk /data/app/~~t1gdtRXEErNirr1vgg2AXg==/com.dawn.libdiecutting-7XJrnFpQ3CIByxBCYosw3w==/base.apk. target_sdk_version=34, uses_libraries=, library_path=/data/app/~~t1gdtRXEErNirr1vgg2AXg==/com.dawn.libdiecutting-7XJrnFpQ3CIByxBCYosw3w==/lib/arm64:/data/app/~~t1gdtRXEErNirr1vgg2AXg==/com.dawn.libdiecutting-7XJrnFpQ3CIByxBCYosw3w==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.dawn.libdiecutting
+2026-06-24 10:22:32.395  5560-5560  GraphicsEnvironment     com.dawn.libdiecutting               V  Currently set values for:
+2026-06-24 10:22:32.395  5560-5560  GraphicsEnvironment     com.dawn.libdiecutting               V    angle_gl_driver_selection_pkgs=[]
+2026-06-24 10:22:32.395  5560-5560  GraphicsEnvironment     com.dawn.libdiecutting               V    angle_gl_driver_selection_values=[]
+2026-06-24 10:22:32.396  5560-5560  GraphicsEnvironment     com.dawn.libdiecutting               V  ANGLE GameManagerService for com.dawn.libdiecutting: false
+2026-06-24 10:22:32.396  5560-5560  GraphicsEnvironment     com.dawn.libdiecutting               V  com.dawn.libdiecutting is not listed in per-application setting
+2026-06-24 10:22:32.397  5560-5560  GraphicsEnvironment     com.dawn.libdiecutting               V  Neither updatable production driver nor prerelease driver is supported.
+2026-06-24 10:22:32.430  5560-5583  vulkan                  com.dawn.libdiecutting               D  searching for layers in '/data/app/~~t1gdtRXEErNirr1vgg2AXg==/com.dawn.libdiecutting-7XJrnFpQ3CIByxBCYosw3w==/lib/arm64'
+2026-06-24 10:22:32.431  5560-5583  vulkan                  com.dawn.libdiecutting               D  searching for layers in '/data/app/~~t1gdtRXEErNirr1vgg2AXg==/com.dawn.libdiecutting-7XJrnFpQ3CIByxBCYosw3w==/base.apk!/lib/arm64-v8a'
+2026-06-24 10:22:32.433  5560-5583  mali_so                 com.dawn.libdiecutting               I  [File] : hardware/arm/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1403; [Func] : base_context_deal_with_version_affairs_rk_ext;
                                                                                                     arm_release_ver of this mali_so is 'g15p0-01eac0', rk_so_ver is '4'.
-2026-06-24 10:06:10.148  4827-4850  mali_so                 com.dawn.libdiecutting               I  [File] : hardware/arm/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1419; [Func] : base_context_deal_with_version_affairs_rk_ext;
+2026-06-24 10:22:32.434  5560-5583  mali_so                 com.dawn.libdiecutting               I  [File] : hardware/arm/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1419; [Func] : base_context_deal_with_version_affairs_rk_ext;
                                                                                                     arm_release_vers are match. to set the full mali_ver 'g15p0-01eac0-x-4' as value of 'sys.gmali.version'.
-2026-06-24 10:06:10.152  4827-4850  mali_so                 com.dawn.libdiecutting               I  [File] : hardware/arm/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1403; [Func] : base_context_deal_with_version_affairs_rk_ext;
+2026-06-24 10:22:32.438  5560-5583  mali_so                 com.dawn.libdiecutting               I  [File] : hardware/arm/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1403; [Func] : base_context_deal_with_version_affairs_rk_ext;
                                                                                                     arm_release_ver of this mali_so is 'g15p0-01eac0', rk_so_ver is '4'.
-2026-06-24 10:06:10.152  4827-4850  mali_so                 com.dawn.libdiecutting               I  [File] : hardware/arm/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1419; [Func] : base_context_deal_with_version_affairs_rk_ext;
+2026-06-24 10:22:32.438  5560-5583  mali_so                 com.dawn.libdiecutting               I  [File] : hardware/arm/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1419; [Func] : base_context_deal_with_version_affairs_rk_ext;
                                                                                                     arm_release_vers are match. to set the full mali_ver 'g15p0-01eac0-x-4' as value of 'sys.gmali.version'.
-2026-06-24 10:06:10.191  4827-4827  AppCompatDelegate       com.dawn.libdiecutting               D  Checking for metadata for AppLocalesMetadataHolderService : Service not found
-2026-06-24 10:06:10.284  4827-4827  n.libdiecutting         com.dawn.libdiecutting               W  Accessing hidden method Landroid/view/View;->computeFitSystemWindows(Landroid/graphics/Rect;Landroid/graphics/Rect;)Z (unsupported, reflection, allowed)
-2026-06-24 10:06:10.284  4827-4827  n.libdiecutting         com.dawn.libdiecutting               W  Accessing hidden method Landroid/view/ViewGroup;->makeOptionalFitsSystemWindows()V (unsupported, reflection, allowed)
-2026-06-24 10:06:10.289  4827-4827  Compatibil...geReporter com.dawn.libdiecutting               D  Compat change id reported: 210923482; UID 10108; state: ENABLED
-2026-06-24 10:06:10.300  4827-4827  Compatibil...geReporter com.dawn.libdiecutting               D  Compat change id reported: 171228096; UID 10108; state: ENABLED
-2026-06-24 10:06:10.414  4827-4827  Compatibil...geReporter com.dawn.libdiecutting               D  Compat change id reported: 237531167; UID 10108; state: DISABLED
-2026-06-24 10:06:10.417  4827-4827  OpenGLRenderer          com.dawn.libdiecutting               W  Unknown dataspace 0
-2026-06-24 10:06:13.284  4827-4827  AndroidRuntime          com.dawn.libdiecutting               D  Shutting down VM
-2026-06-24 10:06:13.298  4827-4827  AndroidRuntime          com.dawn.libdiecutting               E  FATAL EXCEPTION: main (Ask Gemini)
-                                                                                                    Process: com.dawn.libdiecutting, PID: 4827
-                                                                                                    java.lang.NoClassDefFoundError: Failed resolution of: Lcom/google/gson/Gson;
-                                                                                                    	at com.hszn.cutsdk.MainSDK.<init>(SourceFile:16)
-                                                                                                    	at com.dawn.diecutting.LDieCuttingPrintSDK.init(LDieCuttingPrintSDK.java:85)
-                                                                                                    	at com.dawn.libdiecutting.MainActivity.lambda$initViews$0$com-dawn-libdiecutting-MainActivity(MainActivity.java:50)
-                                                                                                    	at com.dawn.libdiecutting.MainActivity$$ExternalSyntheticLambda0.onClick(Unknown Source:2)
-                                                                                                    	at android.view.View.performClick(View.java:7668)
-                                                                                                    	at android.view.View.performClickInternal(View.java:7645)
-                                                                                                    	at android.view.View.-$$Nest$mperformClickInternal(Unknown Source:0)
-                                                                                                    	at android.view.View$PerformClick.run(View.java:30179)
-                                                                                                    	at android.os.Handler.handleCallback(Handler.java:958)
-                                                                                                    	at android.os.Handler.dispatchMessage(Handler.java:99)
-                                                                                                    	at android.os.Looper.loopOnce(Looper.java:205)
-                                                                                                    	at android.os.Looper.loop(Looper.java:294)
-                                                                                                    	at android.app.ActivityThread.main(ActivityThread.java:8248)
-                                                                                                    	at java.lang.reflect.Method.invoke(Native Method)
-                                                                                                    	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:552)
-                                                                                                    	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:971)
-                                                                                                    Caused by: java.lang.ClassNotFoundException: Didn't find class "com.google.gson.Gson" on path: DexPathList[[zip file "/data/app/~~hyeQ4b4pVEXXtduNtt_akw==/com.dawn.libdiecutting-28h-BrlCMz0pqLVgyu5dzw==/base.apk"],nativeLibraryDirectories=[/data/app/~~hyeQ4b4pVEXXtduNtt_akw==/com.dawn.libdiecutting-28h-BrlCMz0pqLVgyu5dzw==/lib/arm64, /data/app/~~hyeQ4b4pVEXXtduNtt_akw==/com.dawn.libdiecutting-28h-BrlCMz0pqLVgyu5dzw==/base.apk!/lib/arm64-v8a, /system/lib64, /system/system_ext/lib64]]
-                                                                                                    	at dalvik.system.BaseDexClassLoader.findClass(BaseDexClassLoader.java:259)
-                                                                                                    	at java.lang.ClassLoader.loadClass(ClassLoader.java:379)
-                                                                                                    	at java.lang.ClassLoader.loadClass(ClassLoader.java:312)
-                                                                                                    	at com.hszn.cutsdk.MainSDK.<init>(SourceFile:16) 
-                                                                                                    	at com.dawn.diecutting.LDieCuttingPrintSDK.init(LDieCuttingPrintSDK.java:85) 
-                                                                                                    	at com.dawn.libdiecutting.MainActivity.lambda$initViews$0$com-dawn-libdiecutting-MainActivity(MainActivity.java:50) 
-                                                                                                    	at com.dawn.libdiecutting.MainActivity$$ExternalSyntheticLambda0.onClick(Unknown Source:2) 
-                                                                                                    	at android.view.View.performClick(View.java:7668) 
-                                                                                                    	at android.view.View.performClickInternal(View.java:7645) 
-                                                                                                    	at android.view.View.-$$Nest$mperformClickInternal(Unknown Source:0) 
-                                                                                                    	at android.view.View$PerformClick.run(View.java:30179) 
-                                                                                                    	at android.os.Handler.handleCallback(Handler.java:958) 
-                                                                                                    	at android.os.Handler.dispatchMessage(Handler.java:99) 
-                                                                                                    	at android.os.Looper.loopOnce(Looper.java:205) 
-                                                                                                    	at android.os.Looper.loop(Looper.java:294) 
-                                                                                                    	at android.app.ActivityThread.main(ActivityThread.java:8248) 
-                                                                                                    	at java.lang.reflect.Method.invoke(Native Method) 
-                                                                                                    	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:552) 
-                                                                                                    	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:971) 
----------------------------- PROCESS ENDED (4827) for package com.dawn.libdiecutting ----------------------------
-2026-06-24 10:06:13.325  4827-4827  Process                 com.dawn.libdiecutting               I  Sending signal. PID: 4827 SIG: 9
+2026-06-24 10:22:32.475  5560-5560  AppCompatDelegate       com.dawn.libdiecutting               D  Checking for metadata for AppLocalesMetadataHolderService : Service not found
+2026-06-24 10:22:32.566  5560-5560  n.libdiecutting         com.dawn.libdiecutting               W  Accessing hidden method Landroid/view/View;->computeFitSystemWindows(Landroid/graphics/Rect;Landroid/graphics/Rect;)Z (unsupported, reflection, allowed)
+2026-06-24 10:22:32.566  5560-5560  n.libdiecutting         com.dawn.libdiecutting               W  Accessing hidden method Landroid/view/ViewGroup;->makeOptionalFitsSystemWindows()V (unsupported, reflection, allowed)
+2026-06-24 10:22:32.571  5560-5560  Compatibil...geReporter com.dawn.libdiecutting               D  Compat change id reported: 210923482; UID 10108; state: ENABLED
+2026-06-24 10:22:32.584  5560-5560  Compatibil...geReporter com.dawn.libdiecutting               D  Compat change id reported: 171228096; UID 10108; state: ENABLED
+2026-06-24 10:22:32.709  5560-5560  Compatibil...geReporter com.dawn.libdiecutting               D  Compat change id reported: 237531167; UID 10108; state: DISABLED
+2026-06-24 10:22:32.712  5560-5560  OpenGLRenderer          com.dawn.libdiecutting               W  Unknown dataspace 0
+2026-06-24 10:22:45.180  5560-5560  CutSDK                  com.dawn.libdiecutting               I  使用默认的配置
+2026-06-24 10:22:45.202  5560-5560  WebViewFactory          com.dawn.libdiecutting               I  Loading com.android.webview version 116.0.5845.195 (code 584519501)
+2026-06-24 10:22:45.216  5560-5560  nativeloader            com.dawn.libdiecutting               D  InitLlndkLibrariesProduct: libEGL.so:libGLESv1_CM.so:libGLESv2.so:libGLESv3.so:libRS.so:libandroid_net.so:libbinder_ndk.so:libc.so:libcgrouprc.so:libclang_rt.asan-aarch64-android.so:libclang_rt.asan-arm-android.so:libclang_rt.hwasan-aarch64-android.so:libcom.android.tethering.connectivity_native.so:libdl.so:libft2.so:liblog.so:libm.so:libmediandk.so:libnativewindow.so:libneuralnetworks.so:libselinux.so:libsync.so:libvndksupport.so:libvulkan.so
+2026-06-24 10:22:45.216  5560-5560  nativeloader            com.dawn.libdiecutting               D  Configuring product-clns-7 for unbundled product apk /system/product/app/webview/webview.apk. target_sdk_version=34, uses_libraries=, library_path=/system/product/app/webview/lib/arm64:/system/product/app/webview/webview.apk!/lib/arm64-v8a:/product/lib64:/system/product/lib64, permitted_path=/data:/mnt/expand:/product/lib64:/system/product/lib64
+2026-06-24 10:22:45.218  5560-5560  nativeloader            com.dawn.libdiecutting               D  InitVndkspLibrariesProduct: android.hardware.common-V2-ndk.so:android.hardware.common.fmq-V1-ndk.so:android.hardware.graphics.allocator-V2-ndk.so:android.hardware.graphics.common-V4-ndk.so:android.hardware.graphics.common@1.0.so:android.hardware.graphics.common@1.1.so:android.hardware.graphics.common@1.2.so:android.hardware.graphics.composer3-V1-ndk.so:android.hardware.graphics.mapper@2.0.so:android.hardware.graphics.mapper@2.1.so:android.hardware.graphics.mapper@3.0.so:android.hardware.graphics.mapper@4.0.so:android.hardware.renderscript@1.0.so:android.hidl.memory.token@1.0.so:android.hidl.memory@1.0-impl.so:android.hidl.memory@1.0.so:android.hidl.safe_union@1.0.so:libRSCpuRef.so:libRSDriver.so:libRS_internal.so:libbase.so:libbcinfo.so:libblas.so:libc++.so:libcompiler_rt.so:libcutils.so:libdmabufheap.so:libgralloctypes.so:libhardware.so:libhidlbase.so:libhidlmemory.so:libion.so:libjsoncpp.so:liblzma.so:libprocessgroup.so:libunwindstack.so:libutils.so:libutilscallstack.so:libz.so
+2026-06-24 10:22:45.246  5560-5560  cr_WVCFactoryProvider   com.dawn.libdiecutting               I  Loaded version=116.0.5845.195 minSdkVersion=1 isBundle=false multiprocess=true packageId=2
+2026-06-24 10:22:45.267  5560-5613  cr_VariationsUtils      com.dawn.libdiecutting               I  Failed reading seed file "/data/user/0/com.dawn.libdiecutting/app_webview/variations_seed_new"
+2026-06-24 10:22:45.284  5560-5560  cr_LibraryLoader        com.dawn.libdiecutting               I  Successfully loaded native library
+2026-06-24 10:22:45.288  5560-5560  cr_CachingUmaRecorder   com.dawn.libdiecutting               I  Flushed 7 samples from 7 histograms, 0 samples were dropped.
+2026-06-24 10:22:45.297  5560-5560  cr_VariationsUtils      com.dawn.libdiecutting               I  Loaded seed with age 2103s
+2026-06-24 10:22:45.334  5560-5560  Compatibil...geReporter com.dawn.libdiecutting               D  Compat change id reported: 183155436; UID 10108; state: ENABLED
+2026-06-24 10:22:45.378  5560-5637  chromium                com.dawn.libdiecutting               W  [WARNING:dns_config_service_android.cc(115)] Failed to read DnsConfig.
+2026-06-24 10:22:45.432  5560-5560  Compatibil...geReporter com.dawn.libdiecutting               D  Compat change id reported: 214741472; UID 10108; state: ENABLED
+2026-06-24 10:22:45.483  5560-5560  AutofillManager         com.dawn.libdiecutting               D  Fill dialog is enabled:false, hints=[]
+2026-06-24 10:22:45.530  5560-5655  libEGL                  com.dawn.libdiecutting               D  loaded /vendor/lib64/egl/libGLES_mali.so
+2026-06-24 10:22:45.532  5560-5640  cr_media                com.dawn.libdiecutting               W  BLUETOOTH_CONNECT permission is missing.
+2026-06-24 10:22:45.551  5560-5640  cr_media                com.dawn.libdiecutting               W  registerBluetoothIntentsIfNeeded: Requires BLUETOOTH permission
+2026-06-24 10:22:45.582  5560-5655  mali_so                 com.dawn.libdiecutting               I  [File] : hardware/arm/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1403; [Func] : base_context_deal_with_version_affairs_rk_ext;
+                                                                                                    arm_release_ver of this mali_so is 'g15p0-01eac0', rk_so_ver is '4'.
+2026-06-24 10:22:45.582  5560-5655  mali_so                 com.dawn.libdiecutting               I  [File] : hardware/arm/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1419; [Func] : base_context_deal_with_version_affairs_rk_ext;
+                                                                                                    arm_release_vers are match. to set the full mali_ver 'g15p0-01eac0-x-4' as value of 'sys.gmali.version'.
+2026-06-24 10:22:45.588  5560-5655  libEGL                  com.dawn.libdiecutting               E  eglCreateContextImpl:931 error 3004 (EGL_BAD_ATTRIBUTE)
+2026-06-24 10:22:45.616  5560-5655  mali_so                 com.dawn.libdiecutting               I  [File] : hardware/arm/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1403; [Func] : base_context_deal_with_version_affairs_rk_ext;
+                                                                                                    arm_release_ver of this mali_so is 'g15p0-01eac0', rk_so_ver is '4'.
+2026-06-24 10:22:45.616  5560-5655  mali_so                 com.dawn.libdiecutting               I  [File] : hardware/arm/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1419; [Func] : base_context_deal_with_version_affairs_rk_ext;
+                                                                                                    arm_release_vers are match. to set the full mali_ver 'g15p0-01eac0-x-4' as value of 'sys.gmali.version'.
+2026-06-24 10:22:45.642  5560-5655  mali_so                 com.dawn.libdiecutting               I  [File] : hardware/arm/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1403; [Func] : base_context_deal_with_version_affairs_rk_ext;
+                                                                                                    arm_release_ver of this mali_so is 'g15p0-01eac0', rk_so_ver is '4'.
+2026-06-24 10:22:45.642  5560-5655  mali_so                 com.dawn.libdiecutting               I  [File] : hardware/arm/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1419; [Func] : base_context_deal_with_version_affairs_rk_ext;
+                                                                                                    arm_release_vers are match. to set the full mali_ver 'g15p0-01eac0-x-4' as value of 'sys.gmali.version'.
+2026-06-24 10:22:45.646  5560-5655  mali_so                 com.dawn.libdiecutting               I  [File] : hardware/arm/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1403; [Func] : base_context_deal_with_version_affairs_rk_ext;
+                                                                                                    arm_release_ver of this mali_so is 'g15p0-01eac0', rk_so_ver is '4'.
+2026-06-24 10:22:45.646  5560-5655  mali_so                 com.dawn.libdiecutting               I  [File] : hardware/arm/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1419; [Func] : base_context_deal_with_version_affairs_rk_ext;
+                                                                                                    arm_release_vers are match. to set the full mali_ver 'g15p0-01eac0-x-4' as value of 'sys.gmali.version'.
+2026-06-24 10:22:46.803  5560-5560  Choreographer           com.dawn.libdiecutting               I  Skipped 102 frames!  The application may be doing too much work on its main thread.
+2026-06-24 10:22:46.839  5560-5560  CutSDK                  com.dawn.libdiecutting               I  成功连接上设备
+2026-06-24 10:22:46.845  5560-5698  CutSDK                  com.dawn.libdiecutting               I  启动处理客户端消息线程
+2026-06-24 10:22:46.845  5560-5560  CutSDK                  com.dawn.libdiecutting               I  读取到固件版本:￠￉
+                                                                                                    60112C??0
+                                                                                                    ??????????????????????????????????????????????????????????????????????
+2026-06-24 10:22:46.846  5560-5699  CutSDK                  com.dawn.libdiecutting               I  启动处理切割机返回的消息线程
+2026-06-24 10:22:46.846  5560-5699  UsbRequestJNI           com.dawn.libdiecutting               D  init
+2026-06-24 10:22:58.046  5560-5569  n.libdiecutting         com.dawn.libdiecutting               I  Background concurrent mark compact GC freed 24919(2644KB) AllocSpace objects, 17(9464KB) LOS objects, 49% free, 3434KB/6869KB, paused 389us,5.659ms total 82.464ms
+2026-06-24 10:22:58.052  5560-5571  n.libdiecutting         com.dawn.libdiecutting               W  ApkAssets: Deleting an ApkAssets object '<empty> and /system/product/app/webview/webview.apk' with 1 weak references
+2026-06-24 10:28:06.413  5560-5569  n.libdiecutting         com.dawn.libdiecutting               I  Background concurrent mark compact GC freed 61970(3331KB) AllocSpace objects, 0(0B) LOS objects, 49% free, 3442KB/6885KB, paused 386us,5.229ms total 50.600ms
+2026-06-24 10:28:56.178  5560-5560  WindowOnBackDispatcher  com.dawn.libdiecutting               W  sendCancelIfRunning: isInProgress=falsecallback=android.view.ViewRootImpl$$ExternalSyntheticLambda17@e1156b9
+---------------------------- PROCESS ENDED (5560) for package com.dawn.libdiecutting ----------------------------
+---------------------------- PROCESS STARTED (6068) for package com.dawn.libdiecutting ----------------------------
+2026-06-24 10:29:11.537  6068-6068  ziparchive              com.dawn.libdiecutting               W  Unable to open '/data/app/~~MhxEZiyDyBg_NjVztc1jZA==/com.dawn.libdiecutting-rCy1GiGSKDjkBNuHIJCRjQ==/base.dm': No such file or directory
+2026-06-24 10:29:11.537  6068-6068  ziparchive              com.dawn.libdiecutting               W  Unable to open '/data/app/~~MhxEZiyDyBg_NjVztc1jZA==/com.dawn.libdiecutting-rCy1GiGSKDjkBNuHIJCRjQ==/base.dm': No such file or directory
+2026-06-24 10:29:11.635  6068-6068  nativeloader            com.dawn.libdiecutting               D  Configuring clns-6 for other apk /data/app/~~MhxEZiyDyBg_NjVztc1jZA==/com.dawn.libdiecutting-rCy1GiGSKDjkBNuHIJCRjQ==/base.apk. target_sdk_version=34, uses_libraries=, library_path=/data/app/~~MhxEZiyDyBg_NjVztc1jZA==/com.dawn.libdiecutting-rCy1GiGSKDjkBNuHIJCRjQ==/lib/arm64:/data/app/~~MhxEZiyDyBg_NjVztc1jZA==/com.dawn.libdiecutting-rCy1GiGSKDjkBNuHIJCRjQ==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.dawn.libdiecutting
+2026-06-24 10:29:11.652  6068-6068  GraphicsEnvironment     com.dawn.libdiecutting               V  Currently set values for:
+2026-06-24 10:29:11.652  6068-6068  GraphicsEnvironment     com.dawn.libdiecutting               V    angle_gl_driver_selection_pkgs=[]
+2026-06-24 10:29:11.652  6068-6068  GraphicsEnvironment     com.dawn.libdiecutting               V    angle_gl_driver_selection_values=[]
+2026-06-24 10:29:11.653  6068-6068  GraphicsEnvironment     com.dawn.libdiecutting               V  ANGLE GameManagerService for com.dawn.libdiecutting: false
+2026-06-24 10:29:11.653  6068-6068  GraphicsEnvironment     com.dawn.libdiecutting               V  com.dawn.libdiecutting is not listed in per-application setting
+2026-06-24 10:29:11.653  6068-6068  GraphicsEnvironment     com.dawn.libdiecutting               V  Neither updatable production driver nor prerelease driver is supported.
+2026-06-24 10:29:11.687  6068-6090  vulkan                  com.dawn.libdiecutting               D  searching for layers in '/data/app/~~MhxEZiyDyBg_NjVztc1jZA==/com.dawn.libdiecutting-rCy1GiGSKDjkBNuHIJCRjQ==/lib/arm64'
+2026-06-24 10:29:11.687  6068-6090  vulkan                  com.dawn.libdiecutting               D  searching for layers in '/data/app/~~MhxEZiyDyBg_NjVztc1jZA==/com.dawn.libdiecutting-rCy1GiGSKDjkBNuHIJCRjQ==/base.apk!/lib/arm64-v8a'
+2026-06-24 10:29:11.690  6068-6090  mali_so                 com.dawn.libdiecutting               I  [File] : hardware/arm/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1403; [Func] : base_context_deal_with_version_affairs_rk_ext;
+                                                                                                    arm_release_ver of this mali_so is 'g15p0-01eac0', rk_so_ver is '4'.
+2026-06-24 10:29:11.690  6068-6090  mali_so                 com.dawn.libdiecutting               I  [File] : hardware/arm/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1419; [Func] : base_context_deal_with_version_affairs_rk_ext;
+                                                                                                    arm_release_vers are match. to set the full mali_ver 'g15p0-01eac0-x-4' as value of 'sys.gmali.version'.
+2026-06-24 10:29:11.693  6068-6090  mali_so                 com.dawn.libdiecutting               I  [File] : hardware/arm/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1403; [Func] : base_context_deal_with_version_affairs_rk_ext;
+                                                                                                    arm_release_ver of this mali_so is 'g15p0-01eac0', rk_so_ver is '4'.
+2026-06-24 10:29:11.693  6068-6090  mali_so                 com.dawn.libdiecutting               I  [File] : hardware/arm/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1419; [Func] : base_context_deal_with_version_affairs_rk_ext;
+                                                                                                    arm_release_vers are match. to set the full mali_ver 'g15p0-01eac0-x-4' as value of 'sys.gmali.version'.
+2026-06-24 10:29:11.732  6068-6068  AppCompatDelegate       com.dawn.libdiecutting               D  Checking for metadata for AppLocalesMetadataHolderService : Service not found
+2026-06-24 10:29:11.824  6068-6068  n.libdiecutting         com.dawn.libdiecutting               W  Accessing hidden method Landroid/view/View;->computeFitSystemWindows(Landroid/graphics/Rect;Landroid/graphics/Rect;)Z (unsupported, reflection, allowed)
+2026-06-24 10:29:11.824  6068-6068  n.libdiecutting         com.dawn.libdiecutting               W  Accessing hidden method Landroid/view/ViewGroup;->makeOptionalFitsSystemWindows()V (unsupported, reflection, allowed)
+2026-06-24 10:29:11.829  6068-6068  Compatibil...geReporter com.dawn.libdiecutting               D  Compat change id reported: 210923482; UID 10108; state: ENABLED
+2026-06-24 10:29:11.841  6068-6068  Compatibil...geReporter com.dawn.libdiecutting               D  Compat change id reported: 171228096; UID 10108; state: ENABLED
+2026-06-24 10:29:11.995  6068-6068  Compatibil...geReporter com.dawn.libdiecutting               D  Compat change id reported: 237531167; UID 10108; state: DISABLED
+2026-06-24 10:29:11.998  6068-6068  OpenGLRenderer          com.dawn.libdiecutting               W  Unknown dataspace 0
+2026-06-24 10:29:36.375  6068-6068  CutSDK                  com.dawn.libdiecutting               I  使用默认的配置
+2026-06-24 10:29:36.404  6068-6068  WebViewFactory          com.dawn.libdiecutting               I  Loading com.android.webview version 116.0.5845.195 (code 584519501)
+2026-06-24 10:29:36.421  6068-6068  nativeloader            com.dawn.libdiecutting               D  InitLlndkLibrariesProduct: libEGL.so:libGLESv1_CM.so:libGLESv2.so:libGLESv3.so:libRS.so:libandroid_net.so:libbinder_ndk.so:libc.so:libcgrouprc.so:libclang_rt.asan-aarch64-android.so:libclang_rt.asan-arm-android.so:libclang_rt.hwasan-aarch64-android.so:libcom.android.tethering.connectivity_native.so:libdl.so:libft2.so:liblog.so:libm.so:libmediandk.so:libnativewindow.so:libneuralnetworks.so:libselinux.so:libsync.so:libvndksupport.so:libvulkan.so
+2026-06-24 10:29:36.421  6068-6068  nativeloader            com.dawn.libdiecutting               D  Configuring product-clns-7 for unbundled product apk /system/product/app/webview/webview.apk. target_sdk_version=34, uses_libraries=, library_path=/system/product/app/webview/lib/arm64:/system/product/app/webview/webview.apk!/lib/arm64-v8a:/product/lib64:/system/product/lib64, permitted_path=/data:/mnt/expand:/product/lib64:/system/product/lib64
+2026-06-24 10:29:36.423  6068-6068  nativeloader            com.dawn.libdiecutting               D  InitVndkspLibrariesProduct: android.hardware.common-V2-ndk.so:android.hardware.common.fmq-V1-ndk.so:android.hardware.graphics.allocator-V2-ndk.so:android.hardware.graphics.common-V4-ndk.so:android.hardware.graphics.common@1.0.so:android.hardware.graphics.common@1.1.so:android.hardware.graphics.common@1.2.so:android.hardware.graphics.composer3-V1-ndk.so:android.hardware.graphics.mapper@2.0.so:android.hardware.graphics.mapper@2.1.so:android.hardware.graphics.mapper@3.0.so:android.hardware.graphics.mapper@4.0.so:android.hardware.renderscript@1.0.so:android.hidl.memory.token@1.0.so:android.hidl.memory@1.0-impl.so:android.hidl.memory@1.0.so:android.hidl.safe_union@1.0.so:libRSCpuRef.so:libRSDriver.so:libRS_internal.so:libbase.so:libbcinfo.so:libblas.so:libc++.so:libcompiler_rt.so:libcutils.so:libdmabufheap.so:libgralloctypes.so:libhardware.so:libhidlbase.so:libhidlmemory.so:libion.so:libjsoncpp.so:liblzma.so:libprocessgroup.so:libunwindstack.so:libutils.so:libutilscallstack.so:libz.so
+2026-06-24 10:29:36.453  6068-6068  cr_WVCFactoryProvider   com.dawn.libdiecutting               I  Loaded version=116.0.5845.195 minSdkVersion=1 isBundle=false multiprocess=true packageId=2
+2026-06-24 10:29:36.479  6068-6120  cr_VariationsUtils      com.dawn.libdiecutting               I  Failed reading seed file "/data/user/0/com.dawn.libdiecutting/app_webview/variations_seed_new"
+2026-06-24 10:29:36.503  6068-6068  cr_LibraryLoader        com.dawn.libdiecutting               I  Successfully loaded native library
+2026-06-24 10:29:36.506  6068-6068  cr_CachingUmaRecorder   com.dawn.libdiecutting               I  Flushed 7 samples from 7 histograms, 0 samples were dropped.
+2026-06-24 10:29:36.515  6068-6068  cr_VariationsUtils      com.dawn.libdiecutting               I  Loaded seed with age 2514s
+2026-06-24 10:29:36.554  6068-6068  Compatibil...geReporter com.dawn.libdiecutting               D  Compat change id reported: 183155436; UID 10108; state: ENABLED
+2026-06-24 10:29:36.607  6068-6139  chromium                com.dawn.libdiecutting               W  [WARNING:dns_config_service_android.cc(115)] Failed to read DnsConfig.
+2026-06-24 10:29:36.656  6068-6068  Compatibil...geReporter com.dawn.libdiecutting               D  Compat change id reported: 214741472; UID 10108; state: ENABLED
+2026-06-24 10:29:36.706  6068-6068  AutofillManager         com.dawn.libdiecutting               D  Fill dialog is enabled:false, hints=[]
+2026-06-24 10:29:36.748  6068-6161  libEGL                  com.dawn.libdiecutting               D  loaded /vendor/lib64/egl/libGLES_mali.so
+2026-06-24 10:29:36.748  6068-6145  cr_media                com.dawn.libdiecutting               W  BLUETOOTH_CONNECT permission is missing.
+2026-06-24 10:29:36.769  6068-6145  cr_media                com.dawn.libdiecutting               W  registerBluetoothIntentsIfNeeded: Requires BLUETOOTH permission
+2026-06-24 10:29:36.799  6068-6161  mali_so                 com.dawn.libdiecutting               I  [File] : hardware/arm/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1403; [Func] : base_context_deal_with_version_affairs_rk_ext;
+                                                                                                    arm_release_ver of this mali_so is 'g15p0-01eac0', rk_so_ver is '4'.
+2026-06-24 10:29:36.799  6068-6161  mali_so                 com.dawn.libdiecutting               I  [File] : hardware/arm/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1419; [Func] : base_context_deal_with_version_affairs_rk_ext;
+                                                                                                    arm_release_vers are match. to set the full mali_ver 'g15p0-01eac0-x-4' as value of 'sys.gmali.version'.
+2026-06-24 10:29:36.805  6068-6161  libEGL                  com.dawn.libdiecutting               E  eglCreateContextImpl:931 error 3004 (EGL_BAD_ATTRIBUTE)
+2026-06-24 10:29:36.834  6068-6161  mali_so                 com.dawn.libdiecutting               I  [File] : hardware/arm/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1403; [Func] : base_context_deal_with_version_affairs_rk_ext;
+                                                                                                    arm_release_ver of this mali_so is 'g15p0-01eac0', rk_so_ver is '4'.
+2026-06-24 10:29:36.834  6068-6161  mali_so                 com.dawn.libdiecutting               I  [File] : hardware/arm/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1419; [Func] : base_context_deal_with_version_affairs_rk_ext;
+                                                                                                    arm_release_vers are match. to set the full mali_ver 'g15p0-01eac0-x-4' as value of 'sys.gmali.version'.
+2026-06-24 10:29:36.860  6068-6161  mali_so                 com.dawn.libdiecutting               I  [File] : hardware/arm/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1403; [Func] : base_context_deal_with_version_affairs_rk_ext;
+                                                                                                    arm_release_ver of this mali_so is 'g15p0-01eac0', rk_so_ver is '4'.
+2026-06-24 10:29:36.860  6068-6161  mali_so                 com.dawn.libdiecutting               I  [File] : hardware/arm/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1419; [Func] : base_context_deal_with_version_affairs_rk_ext;
+                                                                                                    arm_release_vers are match. to set the full mali_ver 'g15p0-01eac0-x-4' as value of 'sys.gmali.version'.
+2026-06-24 10:29:36.864  6068-6161  mali_so                 com.dawn.libdiecutting               I  [File] : hardware/arm/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1403; [Func] : base_context_deal_with_version_affairs_rk_ext;
+                                                                                                    arm_release_ver of this mali_so is 'g15p0-01eac0', rk_so_ver is '4'.
+2026-06-24 10:29:36.864  6068-6161  mali_so                 com.dawn.libdiecutting               I  [File] : hardware/arm/mali_so/driver/product/base/src/mali_base_kbase.c; [Line] : 1419; [Func] : base_context_deal_with_version_affairs_rk_ext;
+                                                                                                    arm_release_vers are match. to set the full mali_ver 'g15p0-01eac0-x-4' as value of 'sys.gmali.version'.
+2026-06-24 10:29:37.274  6068-6079  n.libdiecutting         com.dawn.libdiecutting               W  ApkAssets: Deleting an ApkAssets object '<empty> and /system/product/app/webview/webview.apk' with 1 weak references
+2026-06-24 10:29:38.142  6068-6068  Choreographer           com.dawn.libdiecutting               I  Skipped 111 frames!  The application may be doing too much work on its main thread.
+2026-06-24 10:29:38.168  6068-6068  CutSDK                  com.dawn.libdiecutting               I  成功连接上设备
+2026-06-24 10:29:41.261  6068-6068  CutSDK                  com.dawn.libdiecutting               I  读取固件版本失败
+2026-06-24 10:29:41.263  6068-6205  CutSDK                  com.dawn.libdiecutting               I  启动处理客户端消息线程
+2026-06-24 10:29:41.263  6068-6206  CutSDK                  com.dawn.libdiecutting               I  启动处理切割机返回的消息线程
+2026-06-24 10:29:41.263  6068-6206  UsbRequestJNI           com.dawn.libdiecutting               D  init
+2026-06-24 10:29:41.271  6068-6068  Choreographer           com.dawn.libdiecutting               I  Skipped 185 frames!  The application may be doing too much work on its main thread.
+2026-06-24 10:29:41.288  6068-6083  OpenGLRenderer          com.dawn.libdiecutting               I  Davey! duration=3109ms; Flags=0, FrameTimelineVsyncId=148724, IntendedVsync=4456395382122, Vsync=4459488544567, InputEventId=0, HandleInputStart=4459495010124, AnimationStart=4459495016541, PerformTraversalsStart=4459497255083, DrawStart=4459497580583, FrameDeadline=4456412048788, FrameInterval=4459494225666, FrameStartTime=16720329, SyncQueued=4459498696208, SyncStart=4459498826999, IssueDrawCommandsStart=4459499053916, SwapBuffers=4459503627249, FrameCompleted=4459504555041, DequeueBufferDuration=35000, QueueBufferDuration=781667, GpuCompleted=4459503819458, SwapBuffersCompleted=4459504555041, DisplayPresentTime=4456043122539, CommandSubmissionCompleted=4459503627249, 
+2026-06-24 10:29:43.682  6068-6068  CutSDK                  com.dawn.libdiecutting               I  消息已添加到队列中
+2026-06-24 10:29:43.688  6068-6205  CutSDK                  com.dawn.libdiecutting               I  出栈一条待处理的消息:InputMessage{action=FirmwareVersion, time=5, pic='', size=Size64, materialType=SoftPaper, isProfile=false}
+2026-06-24 10:30:05.238  6068-6068  CutSDK                  com.dawn.libdiecutting               I  消息已添加到队列中
+2026-06-24 10:30:05.287  6068-6205  CutSDK                  com.dawn.libdiecutting               I  出栈一条待处理的消息:InputMessage{action=Cut, time=5, pic='test.png', size=Size64, materialType=SoftPaper, isProfile=false}
+2026-06-24 10:30:05.287  6068-6205  CutSDK                  com.dawn.libdiecutting               I  开始检查前传感器是否被遮挡
+2026-06-24 10:30:05.350  6068-6197  CutSDK                  com.dawn.libdiecutting               I  前感应器无遮挡
+2026-06-24 10:30:05.351  6068-6068  CutSDK                  com.dawn.libdiecutting               I  开始处理图
+2026-06-24 10:30:07.022  6068-6068  CutSDK                  com.dawn.libdiecutting               I  完成图片处理
+2026-06-24 10:30:07.306  6068-6068  CutSDK                  com.dawn.libdiecutting               I  plt:TB25;3680,5700;CT1;IN;VS80;FS280;PU0,0;PU80,80;PD80,160;PU1286,295;PD1293,292;PD1347,341;PD1357,350;PD1378,367;PD1400,381;PD1423,393;PD1446,402;PD1470,409;PD1496,414;PD1521,416;PD1534,416;PD1543,417;PD1562,420;PD1580,427;PD1600,437;PD1619,450;PD1639,466;PD1668,494;PD1707,538;PD1742,591;PD1774,649;PD1801,712;PD1812,744;PD1815,756;PD1820,788;PD1828,851;PD1834,960;PD1838,1085;PD1839,1216;PD1837,1342;PD1831,1451;PD1824,1516;PD1819,1547;PD1816,1560;PD1809,1580;PD1793,1622;PD1774,1664;PD1751,1705;PD1726,1744;PD1700,1782;PD1673,1816;PD1645,1847;PD1617,1874;PD1590,1897;PD1564,1915;PD1540,1928;PD1518,1934;PD1504,1934;PD1496,1932;PD1488,1928;PD1482,1922;PD1477,1914;PD1472,1904;PD1471,1898;PD1469,1892;PD1464,1882;PD1457,1874;PD1449,1869;PD1434,1864;PD1405,1849;PD1390,1839;PD1380,1832;PD1359,1822;PD1337,1818;PD1315,1818;PD1294,1824;PD1275,1834;PD1260,1848;PD1248,1866;PD1244,1877;PD1236,1889;PD1229,1894;PD1221,1898;PD1211,1898;PD1201,1902;PD1191,1909;PD1183,1918;PD1176,1930;PD1172,1943;PD1169,1957;PD1169,1972;PD1170,1980;PD1180,2034;PD1174,2034;PD1168,2032;PD1162,2028;PD1158,2022;PD1157,2014;PD946,2014;PD862,2014;PD764,2012;PD717,2008;PD682,2004;PD657,1997;PD642,1989;PD637,1981;PD635,1975;PD634,1968;PD630,1956;PD623,1942;PD614,1928;PD608,1921;PD601,1912;PD591,1894;PD588,1878;PD591,1864;PD601,1853;PD617,1844;PD640,1838;PD668,1835;PD685,1834;PD692,1834;PD704,1829;PD709,1819;PD709,1808;PD704,1794;PD695,1781;PD682,1768;PD666,1759;PD656,1755;PD644,1749;PD638,1743;PD636,1736;PD636,1727;PD639,1717;PD648,1699;PD657,1685;PD664,1674;PD673,1652;PD664,1654;PD660,1648;PD659,1637;PD660,1619;PD661,1608;PD662,1599;PD663,1581;PD661,1562;PD658,1543;PD648,1514;PD631,1478;PD609,1445;PD583,1418;PD562,1402;PD548,1394;PD533,1388;PD518,1385;PD511,1385;PD499,1384;PD483,1382;PD460,1366;PD466,1361;PD464,1351;PD461,1343;PD456,1330;PD451,1322;PD428,1312;PD427,1318;PD428,1325;PD436,1332;PD434,1345;PD434,1353;PD434,1361;PD432,1373;PD424,1396;PD416,1390;PD406,1388;PD386,1379;PD368,1369;PD353,1360;PD335,1352;PD325,1349;PD318,1349;PD298,1358;PD303,1364;PD300,1373;PD293,1382;PD279,1396;PD254,1411;PD235,1419;PD223,1422;PD206,1415;PD196,1404;PD187,1390;PD183,1383;PD178,1372;PD168,1356;PD159,1344;PD152,1339;PD146,1339;PD142,1345;PD141,1356;PD142,1373;PD143,1384;PD145,1401;PD145,1420;PD142,1428;PD136,1432;PD127,1434;PD106,1431;PD87,1426;PD44,1414;PD47,1408;PD53,1402;PD63,1400;PD64,1111;PD66,988;PD70,837;PD73,775;PD75,760;PD79,744;PD90,712;PD104,678;PD121,644;PD140,611;PD162,578;PD184,546;PD208,516;PD232,488;PD256,463;PD281,441;PD305,422;PD328,407;PD349,396;PD369,391;PD387,391;PD395,393;PD402,396;PD415,398;PD428,399;PD439,397;PD449,392;PD458,386;PD464,376;PD470,365;PD472,358;PD474,350;PD480,339;PD486,333;PD495,327;PD506,323;PD529,317;PD575,311;PD641,308;PD788,304;PD923,302;PD1340,298;PU788,2058;PD785,2051;PD801,2035;PD815,2031;PD846,2027;PD921,2025;PD994,2025;PD1058,2025;PD1142,2026;PD1176,2029;PD1189,2032;PD1196,2037;PD1200,2043;PD1204,2054;PD1211,2066;PD1220,2077;PD1231,2085;PD1243,2090;PD1255,2092;PD1268,2092;PD1280,2088;PD1286,2084;PD1298,2077;PD1312,2070;PD1321,2069;PD1330,2070;PD1338,2072;PD1352,2082;PD1362,2091;PD1371,2098;PD1384,2105;PD1393,2106;PD1403,2104;PD1414,2100;PD1435,2088;PD1452,2076;PD1466,2068;PD1477,2066;PD1489,2066;PD1508,2068;PD1536,2077;PD1566,2092;PD1597,2113;PD1629,2138;PD1662,2168;PD1694,2202;PD1726,2238;PD1756,2277;PD1784,2318;PD1809,2360;PD1831,2403;PD1850,2445;PD1864,2487;PD1869,2508;PD1872,2522;PD1876,2557;PD1881,2626;PD1885,2740;PD1885,2868;PD1882,3000;PD1876,3124;PD1868,3230;PD1860,3290;PD1854,3318;PD1851,3328;PD1842,3348;PD1824,3388;PD1803,3427;PD1780,3464;PD1755,3499;PD1728,3532;PD1700,3563;PD1670,3592;PD1639,3618;PD1607,3642;PD1574,3663;PD1540,3681;PD1506,3696;PD1471,3708;PD1437,3717;PD1402,3722;PD1385,3723;PD1358,3724;PD1324,3728;PD1309,3730;PD1298,3734;PD1271,3737;PD1203,3739;PD1095,3736;PD1027,3732;PD998,3727;PD992,3725;PD986,3722;PD977,3719;PD959,3720;PD964,3729;PD957,3734;PD946,3737;PD933,3739;PD926,3740;PD919,3739;PD906,3737;PD895,3734;PD888,3729;PD864,3716;PD864,3724;PD858,3727;PD841,3734;PD
+2026-06-24 10:30:07.306  6068-6068  CutSDK                  com.dawn.libdiecutting               I  开始检查是否有待处理的相片
+2026-06-24 10:30:16.123  6068-6197  CutSDK                  com.dawn.libdiecutting               I  后感应器发现有相纸
+2026-06-24 10:30:16.124  6068-6068  CutSDK                  com.dawn.libdiecutting               I  开始巡边切割
+2026-06-24 10:30:24.060  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：3
+2026-06-24 10:30:26.170  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：4
+2026-06-24 10:30:26.759  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：6
+2026-06-24 10:30:27.347  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：7
+2026-06-24 10:30:27.948  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：9
+2026-06-24 10:30:28.531  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：10
+2026-06-24 10:30:29.125  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：12
+2026-06-24 10:30:29.717  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：14
+2026-06-24 10:30:30.319  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：15
+2026-06-24 10:30:30.930  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：17
+2026-06-24 10:30:32.646  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：18
+2026-06-24 10:30:33.237  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：20
+2026-06-24 10:30:33.823  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：22
+2026-06-24 10:30:34.413  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：23
+2026-06-24 10:30:35.004  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：25
+2026-06-24 10:30:35.605  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：26
+2026-06-24 10:30:37.166  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：28
+2026-06-24 10:30:37.801  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：30
+2026-06-24 10:30:38.391  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：31
+2026-06-24 10:30:38.982  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：33
+2026-06-24 10:30:39.580  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：34
+2026-06-24 10:30:40.189  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：36
+2026-06-24 10:30:40.771  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：38
+2026-06-24 10:30:41.358  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：39
+2026-06-24 10:30:41.964  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：41
+2026-06-24 10:30:42.551  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：42
+2026-06-24 10:30:43.144  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：44
+2026-06-24 10:30:43.756  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：46
+2026-06-24 10:30:44.354  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：47
+2026-06-24 10:30:46.058  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：49
+2026-06-24 10:30:47.354  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：50
+2026-06-24 10:30:48.653  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：52
+2026-06-24 10:30:50.065  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：53
+2026-06-24 10:30:51.452  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：55
+2026-06-24 10:30:53.378  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：57
+2026-06-24 10:30:54.356  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：58
+2026-06-24 10:30:56.264  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：60
+2026-06-24 10:30:56.972  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：61
+2026-06-24 10:30:57.562  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：63
+2026-06-24 10:30:58.153  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：65
+2026-06-24 10:30:58.752  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：66
+2026-06-24 10:30:59.344  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：68
+2026-06-24 10:30:59.935  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：69
+2026-06-24 10:31:00.535  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：71
+2026-06-24 10:31:02.744  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：73
+2026-06-24 10:31:03.434  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：74
+2026-06-24 10:31:04.027  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：76
+2026-06-24 10:31:04.624  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：77
+2026-06-24 10:31:05.213  6068-6197  CutSDK                  com.dawn.libdiecutting               I  当前进度：79
+2026-06-24 10:31:05.641  6068-6205  AndroidRuntime          com.dawn.libdiecutting               E  FATAL EXCEPTION: pool-2-thread-1 (Ask Gemini)
+                                                                                                    Process: com.dawn.libdiecutting, PID: 6068
+                                                                                                    java.lang.StringIndexOutOfBoundsException: length=85; index=85
+                                                                                                    	at java.lang.String.charAt(Native Method)
+                                                                                                    	at d.b.a(SourceFile:87)
+                                                                                                    	at d.b.b(SourceFile:10)
+                                                                                                    	at a.a.a(SourceFile:176)
+                                                                                                    	at com.hszn.cutsdk.MainSDK.h(SourceFile:4)
+                                                                                                    	at com.hszn.cutsdk.MainSDK$$ExternalSyntheticLambda2.run(Unknown Source:2)
+                                                                                                    	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+                                                                                                    	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+                                                                                                    	at java.lang.Thread.run(Thread.java:1012)
+2026-06-24 10:31:05.651  6068-6205  n.libdiecutting         com.dawn.libdiecutting               W  Attempt to remove non-JNI local reference
+2026-06-24 10:31:05.683  6068-6205  Process                 com.dawn.libdiecutting               I  Sending signal. PID: 6068 SIG: 9
+---------------------------- PROCESS ENDED (6068) for package com.dawn.libdiecutting ----------------------------

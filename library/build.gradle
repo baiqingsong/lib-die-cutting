@@ -56,9 +56,6 @@ dependencies {
     // CutSDK.aar 内部依赖 Gson
     implementation 'com.google.code.gson:gson:2.8.9'
 
-    // 串口刻绘 SDK（CutSDKManager，纯切割/刻绘机）- compileOnly，使用者需自行添加此 AAR
-    compileOnly files('libs/CutSDKManager.aar')
-
-    // 打印切割一体机 SDK（CutSDK.aar，MainSDK，USB HID 通信）- 主 SDK，随库打包
+    // 打印切割一体机 SDK（MainSDK，USB HID）
     api files('libs/CutSDK.aar')
 }
