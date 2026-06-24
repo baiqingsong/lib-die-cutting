@@ -1,6 +1,10 @@
 # lib-die-cutting
 
-Android 模切机控制工具库（基于汇森智诺 CutSDKManager 封装）
+Android 模切机控制工具库（基于汇森智诺 SDK 封装）
+
+支持两种机器类型：
+- **`LDieCuttingMachine`** — 串口刻绘机（CutSDKManager，PLT 矢量指令）
+- **`LDieCuttingPrintSDK`** — 打印切割一体机（MainSDK，USB HID，传入 Bitmap 自动切割）
 
 ## 引用
 
@@ -295,4 +299,76 @@ printSDK.release();
 | `ERROR_EXECUTE_COMMAND_FAIL` | 1007 | 无法发送指令 |
 | `ERROR_EXECUTE_PLT_FAIL` | 1008 | 无法发送 PLT 数据 |
 | `ERROR_CUT_EXCEPTION` | 1009 | 切割异常终止 |
+
+---
+
+## 打印切割一体机 API（`LDieCuttingPrintSDK`）
+
+### 初始化（密钥外部传入）
+
+```java
+LDieCuttingPrintSDK sdk = LDieCuttingPrintSDK.getInstance();
+sdk.init(context, "your-api-key");  // 密钥由调用方传入
+sdk.setCallback(callback);
+```
+
+### 切割操作
+
+| 方法 | 说明 |
+|------|------|
+| `processCut(Bitmap, fileName)` | 普通切割图片 |
+| `processProfileCut(Bitmap, fileName)` | 肖像照切割 |
+| `processPrintOnly()` | 仅打印 |
+
+### 机器控制
+
+| 方法 | 说明 |
+|------|------|
+| `paperOut()` | 退纸 |
+| `paperIn()` | 进纸 |
+| `moveLeft()` / `moveRight()` | 左/右移刀座 |
+| `stopMove()` | 停止移动 |
+| `reboot()` | 重启下位机 |
+| `quitFromEntry()` | 从入口退纸 |
+| `calibration()` | 校准（6s 后自动查询结果） |
+| `queryFirmwareVersion()` | 查询固件版本 |
+
+### 图片加载
+
+| 方法 | 说明 |
+|------|------|
+| `loadBitmapForCut(Context, resId)` | 按 96 DPI 加载（不缩放，保持透明） |
+
+### 使用示例
+
+```java
+LDieCuttingPrintSDK sdk = LDieCuttingPrintSDK.getInstance();
+sdk.init(context, apiKey);
+sdk.setCallback(new LDieCuttingCallback() {
+    @Override public void onStatusChanged(LDieCuttingStatus s) {
+        // Status.OK / Release / Finish / Error 等
+    }
+    @Override public void onProgressUpdated(float p, int c, int t) {}
+    @Override public void onError(int code, String msg) {
+        Log.e("TAG", LDieCuttingConst.getErrorDescription(code));
+    }
+});
+
+// 切割
+Bitmap bmp = LDieCuttingPrintSDK.loadBitmapForCut(this, R.drawable.test4);
+sdk.processCut(bmp, "test.png");
+
+// 释放
+sdk.release();
+```
+
+### 工作流程
+
+```
+初始化 → Status.OK → 操作按钮可用
+  ├── 仅打印 → CanPrint 通知
+  ├── 普通切割 → 传入 Bitmap → SDK 识别标记点 → 切割 → Finish
+  └── 肖像切割 → 传入 Bitmap + setProfile(true) → 缩小轮廓 → Finish
+释放 → Status.Release
+```
 

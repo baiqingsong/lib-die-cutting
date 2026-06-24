@@ -1,5 +1,6 @@
 package com.dawn.libdiecutting;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -8,48 +9,25 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.dawn.diecutting.LDieCuttingCallback;
 import com.dawn.diecutting.LDieCuttingConfig;
-import com.dawn.diecutting.LDieCuttingMachine;
+import com.dawn.diecutting.LDieCuttingPrintSDK;
 import com.dawn.diecutting.LDieCuttingStatus;
-import com.hszn.sdk.interfaces.CutListener;
-
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
- * 模切机控制演示 Activity
- * <p>所有串口操作均在后台线程执行，避免阻塞主线程导致 ANR</p>
+ * 打印切割一体机演示（MainSDK）
  */
 public class MainActivity extends AppCompatActivity {
 
-    private LDieCuttingMachine machine;
-    private TextView tvStatus;
-    private TextView tvProgress;
-    private TextView tvLog;
+    private LDieCuttingPrintSDK sdk;
+    private TextView tvStatus, tvProgress, tvLog;
 
-    /** 后台串行线程，所有同步操作排队执行，避免指令冲突 */
-    private final ExecutorService executor = Executors.newSingleThreadExecutor();
-
-    /** 测试 PLT 数据：画一个 100x100 的方框 */
-    private static final String TEST_PLT =
-            "IN;VS80;FS260;" +
-            "PU100,100;" +
-            "PD100,200;PD200,200;PD200,100;PD100,100;" +
-            "PU0,0;";
+    private static final String API_KEY = "saikt13agrt6i13h";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        machine = LDieCuttingMachine.getInstance();
-
+        sdk = LDieCuttingPrintSDK.getInstance();
         initViews();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        executor.shutdownNow();
     }
 
     private void initViews() {
@@ -57,156 +35,71 @@ public class MainActivity extends AppCompatActivity {
         tvProgress = findViewById(R.id.tv_progress);
         tvLog = findViewById(R.id.tv_log);
 
-        Button btnInit = findViewById(R.id.btn_connect);
-        Button btnRelease = findViewById(R.id.btn_disconnect);
-        Button btnStart = findViewById(R.id.btn_start);
-        Button btnStop = findViewById(R.id.btn_stop);
-        Button btnPause = findViewById(R.id.btn_pause);
-        Button btnResume = findViewById(R.id.btn_resume);
-        Button btnEmergency = findViewById(R.id.btn_emergency);
-        Button btnConfig = findViewById(R.id.btn_config);
-        Button btnSendPlt = findViewById(R.id.btn_send_plt);
+        Button b1 = findViewById(R.id.btn_connect);
+        Button b2 = findViewById(R.id.btn_disconnect);
+        Button b3 = findViewById(R.id.btn_start);
+        Button b4 = findViewById(R.id.btn_stop);
+        Button b5 = findViewById(R.id.btn_pause);
+        Button b6 = findViewById(R.id.btn_resume);
+        Button b7 = findViewById(R.id.btn_emergency);
+        Button b8 = findViewById(R.id.btn_config);
+        Button b9 = findViewById(R.id.btn_send_plt);
 
-        // 初始化 SDK（主线程操作，很快）
-        btnInit.setOnClickListener(v -> {
-            appendLog("正在初始化 SDK...");
-            machine.init(getApplicationContext());
-            machine.setCallback(mainCallback);
-            appendLog("SDK 初始化完成");
-            updateUI();
+        b1.setText("初始化");
+        b1.setOnClickListener(v -> {
+            sdk.init(getApplicationContext(), API_KEY);
+            sdk.setCallback(cb);
+            log("初始化完成 (等待Status.OK)");
         });
 
-        // 释放 SDK
-        btnRelease.setOnClickListener(v -> {
-            executor.execute(() -> {
-                machine.release();
-                runOnUiThread(() -> {
-                    appendLog("SDK 已释放");
-                    updateUI();
-                });
-            });
-        });
+        b2.setText("释放");
+        b2.setOnClickListener(v -> { sdk.release(); log("已释放"); });
 
-        // 测试切割
-        btnStart.setOnClickListener(v -> runOnBg("测试切割", () -> {
-            boolean ok = machine.testCut();
-            return ok ? "指令已发送" : "发送失败";
-        }));
+        b3.setText("普通切割");
+        b3.setOnClickListener(v -> cut(R.drawable.test4, false));
 
-        // 取消切割
-        btnStop.setOnClickListener(v -> runOnBg("取消切割", () -> {
-            boolean ok = machine.cancelCut();
-            return ok ? "指令已发送" : "发送失败";
-        }));
+        b4.setText("肖像切割");
+        b4.setOnClickListener(v -> cut(R.drawable.profile, true));
 
-        // 出纸
-        btnPause.setOnClickListener(v -> executor.execute(() -> {
-            machine.outPager(true);
-            runOnUiThread(() -> appendLog("出纸指令已发送"));
-        }));
+        b5.setText("仅打印");
+        b5.setOnClickListener(v -> { sdk.processPrintOnly(); log("仅打印"); });
 
-        // 获取设备状态
-        btnResume.setOnClickListener(v -> runOnBg("查询状态", () -> {
-            int st = machine.getDeviceStatus();
-            return "设备状态: " + (st == 1 ? "刻绘中" : st == 0 ? "空闲" : "未知(" + st + ")");
-        }));
+        b6.setText("进纸");
+        b6.setOnClickListener(v -> { sdk.paperIn(); log("进纸"); });
 
-        // 查询参数
-        btnEmergency.setOnClickListener(v -> runOnBg("查询参数", () -> {
-            int pressure = machine.getPressure();
-            int speed = machine.getSpeed();
-            String devId = machine.getDeviceId();
-            String version = machine.getDeviceVersion();
-            return "压力:" + pressure + " 速度:" + speed
-                    + " ID:" + devId + " 版本:" + version;
-        }));
+        b7.setText("退纸");
+        b7.setOnClickListener(v -> { sdk.paperOut(); log("退纸"); });
 
-        // 应用配置
-        btnConfig.setOnClickListener(v -> runOnBg("应用配置", () -> {
-            LDieCuttingConfig config = LDieCuttingConfig.createDefault()
-                    .setPressure(250)
-                    .setSpeed(90)
-                    .setWideFormat(208);
-            boolean ok = machine.setConfig(config);
-            return ok ? "配置成功" : "配置失败";
-        }));
+        b8.setText("左移");
+        b8.setOnClickListener(v -> { sdk.moveLeft(); log("左移刀座"); });
 
-        // 发送 PLT 切割数据
-        btnSendPlt.setOnClickListener(v -> {
-            appendLog("发送 PLT 切割数据...");
-            runOnUiThread(() -> tvProgress.setText("进度: 0%"));
-            machine.sendCutData(TEST_PLT, "test.plt", new CutListener() {
-                @Override
-                public void onComplete() {
-                    runOnUiThread(() -> {
-                        appendLog("切割完成");
-                        tvProgress.setText("进度: 100% (完成)");
-                    });
-                }
-                @Override
-                public void onProgress(int percent) {
-                    runOnUiThread(() -> {
-                        tvProgress.setText("进度: " + percent + "%");
-                        appendLog("进度: " + percent + "%");
-                    });
-                }
-                @Override
-                public void onError(int code, String msg) {
-                    runOnUiThread(() -> appendLog("切割出错: [" + code + "] " + msg));
-                }
-            });
-        });
+        b9.setText("右移");
+        b9.setOnClickListener(v -> { sdk.moveRight(); log("右移刀座"); });
     }
 
-    /** 在后台线程执行同步操作并更新 UI */
-    private void runOnBg(String label, BgTask task) {
-        executor.execute(() -> {
-            appendLogBg(label + "...");
-            String result = task.run();
-            runOnUiThread(() -> appendLog(label + ": " + result));
-        });
-    }
-
-    /** 后台线程中追加日志 */
-    private void appendLogBg(String msg) {
-        runOnUiThread(() -> appendLog(msg));
-    }
-
-    private interface BgTask {
-        String run();
-    }
-
-    // ==================== 回调 ====================
-
-    private final LDieCuttingCallback mainCallback = new LDieCuttingCallback() {
-        @Override
-        public void onStatusChanged(LDieCuttingStatus status) {
-            runOnUiThread(() ->
-                tvStatus.setText("状态: " + status.getStateName()));
+    private void cut(int resId, boolean profile) {
+        Bitmap bmp = LDieCuttingPrintSDK.loadBitmapForCut(this, resId);
+        if (profile) {
+            sdk.processProfileCut(bmp, "profile.png");
+        } else {
+            sdk.processCut(bmp, "test.png");
         }
-        @Override
-        public void onProgressUpdated(float progress, int currentCount, int totalCount) {
-            runOnUiThread(() ->
-                tvProgress.setText("进度: " + (int) (progress * 100) + "%"));
+        log((profile ? "肖像" : "普通") + "切割已发送");
+    }
+
+    private final LDieCuttingCallback cb = new LDieCuttingCallback() {
+        @Override public void onStatusChanged(LDieCuttingStatus s) {
+            runOnUiThread(() -> tvStatus.setText(s.getStateName()));
         }
-        @Override
-        public void onError(int errorCode, String message) {
-            runOnUiThread(() ->
-                appendLog("错误 [" + errorCode + "]: " + message));
+        @Override public void onProgressUpdated(float p, int c, int t) {
+            runOnUiThread(() -> tvProgress.setText((int)(p*100) + "%"));
+        }
+        @Override public void onError(int code, String msg) {
+            runOnUiThread(() -> log("错误[" + code + "]: " + msg));
         }
     };
 
-    // ==================== UI 辅助 ====================
-
-    private void updateUI() {
-        LDieCuttingStatus status = machine.getCurrentStatus();
-        tvStatus.setText("状态: " + status.getStateName()
-                + (machine.isInitialized() ? " (已初始化)" : " (未初始化)"));
-        tvProgress.setText("进度: " + (int) (status.getProgress() * 100) + "%");
-    }
-
-    private void appendLog(String msg) {
-        String current = tvLog.getText().toString();
-        tvLog.setText(current + "\n" + msg);
+    private void log(String msg) {
+        tvLog.setText(tvLog.getText() + "\n" + msg);
     }
 }

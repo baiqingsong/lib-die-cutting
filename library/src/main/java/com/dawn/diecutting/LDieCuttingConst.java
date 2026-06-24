@@ -32,6 +32,33 @@ public final class LDieCuttingConst {
     /** 测试切割 */
     public static final int ACTION_TEST_CUT = 5;
 
+    /** 进纸 */
+    public static final int ACTION_PAPER_IN = 6;
+
+    /** 左移刀座 */
+    public static final int ACTION_MOVE_LEFT = 7;
+
+    /** 右移刀座 */
+    public static final int ACTION_MOVE_RIGHT = 8;
+
+    /** 停止移动 */
+    public static final int ACTION_STOP_MOVE = 9;
+
+    /** 重启下位机 */
+    public static final int ACTION_REBOOT = 10;
+
+    /** 从入口处退纸 */
+    public static final int ACTION_QUIT_ONLY = 11;
+
+    /** 校准 */
+    public static final int ACTION_CALIBRATION = 12;
+
+    /** 查询校准结果 */
+    public static final int ACTION_QUERY_CALIBRATION = 13;
+
+    /** 查询固件版本 */
+    public static final int ACTION_FIRMWARE_VERSION = 14;
+
     // ==================== 物料类型（Material Type） ====================
 
     /** 软纸 */
@@ -96,6 +123,12 @@ public final class LDieCuttingConst {
 
     /** SDK 已释放资源 */
     public static final int STATUS_RELEASE = 3;
+
+    /** 校准失败 */
+    public static final int STATUS_CALIBRATION_FAIL = 4;
+
+    /** 校准成功 */
+    public static final int STATUS_CALIBRATION_OK = 5;
 
     // ==================== 错误码 ====================
 
@@ -193,6 +226,24 @@ public final class LDieCuttingConst {
                 return "左右移动";
             case ACTION_TEST_CUT:
                 return "测试切割";
+            case ACTION_PAPER_IN:
+                return "进纸";
+            case ACTION_MOVE_LEFT:
+                return "左移刀座";
+            case ACTION_MOVE_RIGHT:
+                return "右移刀座";
+            case ACTION_STOP_MOVE:
+                return "停止移动";
+            case ACTION_REBOOT:
+                return "重启下位机";
+            case ACTION_QUIT_ONLY:
+                return "从入口退纸";
+            case ACTION_CALIBRATION:
+                return "校准";
+            case ACTION_QUERY_CALIBRATION:
+                return "查询校准结果";
+            case ACTION_FIRMWARE_VERSION:
+                return "查询固件版本";
             default:
                 return "未知操作";
         }
