@@ -131,14 +131,19 @@ public class MainActivity extends AppCompatActivity {
                 Bitmap result = invertAlpha(src);
                 src.recycle();
 
+                // 缩放到 1800x1200
+                Bitmap scaled = Bitmap.createScaledBitmap(result, 1200, 1800, true);
+                result.recycle();
+                logBg("缩放: " + scaled.getWidth() + "x" + scaled.getHeight());
+
                 // 保存到应用私有目录（无需权限）
                 File dir = getExternalFilesDir("diecutting");
                 if (dir != null && !dir.exists()) dir.mkdirs();
                 File out = new File(dir, "finish.png");
                 FileOutputStream fos = new FileOutputStream(out);
-                result.compress(Bitmap.CompressFormat.PNG, 100, fos);
+                scaled.compress(Bitmap.CompressFormat.PNG, 100, fos);
                 fos.close();
-                result.recycle();
+                scaled.recycle();
 
                 logBg("✅ " + out.getAbsolutePath());
             } catch (Exception e) {
