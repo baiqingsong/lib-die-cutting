@@ -1,6 +1,7 @@
 package com.dawn.libdiecutting;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,6 +12,9 @@ import com.dawn.diecutting.LDieCuttingCallback;
 import com.dawn.diecutting.LDieCuttingConst;
 import com.dawn.diecutting.LDieCuttingPrintSDK;
 import com.dawn.diecutting.LDieCuttingStatus;
+
+import java.io.File;
+import java.io.FileOutputStream;
 
 /**
  * 打印切割一体机演示 — 完全对应厂商 printthencutDemo
@@ -78,6 +82,10 @@ public class MainActivity extends AppCompatActivity {
         btnEnter.setOnClickListener(v -> sdk.paperIn());
         btnCalib.setOnClickListener(v -> sdk.calibration());
 
+        // ==== 图片处理按钮 ====
+        Button btnProcessImg = findViewById(R.id.btn_process_img);
+        btnProcessImg.setOnClickListener(v -> processImage());
+
         disableAll(); btnInit.setEnabled(true);
         log("①初始化 → ②仅打印 → ③手动放纸 → ④切割");
     }
@@ -109,4 +117,48 @@ public class MainActivity extends AppCompatActivity {
                 btnCut, btnProfile, btnPrint, btnReboot, btnQuit, btnEnter, btnCalib}) b.setEnabled(false);
     }
     private void log(String msg) { tvLog.setText(tvLog.getText() + "\n" + msg); }
+
+    // ==================== 图片处理 ====================
+
+    private void processImage() {
+        new Thread(() -> {
+            try {
+                Bitmap src = BitmapFactory.decodeResource(getResources(), R.drawable.frame);
+                if (src == null) { logBg("❌ 无法加载 frame.png"); return; }
+                logBg("frame.png: " + src.getWidth() + "x" + src.getHeight());
+
+                // 透明→黑色, 不透明→透明
+                Bitmap result = invertAlpha(src);
+                src.recycle();
+
+                // 保存到应用私有目录（无需权限）
+                File dir = getExternalFilesDir("diecutting");
+                if (dir != null && !dir.exists()) dir.mkdirs();
+                File out = new File(dir, "finish.png");
+                FileOutputStream fos = new FileOutputStream(out);
+                result.compress(Bitmap.CompressFormat.PNG, 100, fos);
+                fos.close();
+                result.recycle();
+
+                logBg("✅ " + out.getAbsolutePath());
+            } catch (Exception e) {
+                logBg("❌ " + e.getMessage());
+            }
+        }).start();
+    }
+
+    private Bitmap invertAlpha(Bitmap src) {
+        int w = src.getWidth(), h = src.getHeight();
+        Bitmap out = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+        int[] pixels = new int[w * h];
+        src.getPixels(pixels, 0, w, 0, 0, w, h);
+        for (int i = 0; i < pixels.length; i++) {
+            int alpha = (pixels[i] >> 24) & 0xFF;
+            pixels[i] = (alpha == 0) ? 0xFF000000 : 0x00000000;
+        }
+        out.setPixels(pixels, 0, w, 0, 0, w, h);
+        return out;
+    }
+
+    private void logBg(String msg) { runOnUiThread(() -> log(msg)); }
 }

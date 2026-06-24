@@ -60,5 +60,10 @@
         android:layout_height="wrap_content" android:text="日志:\n" android:textSize="11sp"
         android:fontFamily="monospace" android:padding="6dp" android:layout_marginTop="6dp"
         android:background="#F0F0F0" />
+
+    <Button android:id="@+id/btn_process_img" android:text="图片处理: frame → finish"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="8dp" android:backgroundTint="#FF9800" />
+
 </LinearLayout>
 </ScrollView>
