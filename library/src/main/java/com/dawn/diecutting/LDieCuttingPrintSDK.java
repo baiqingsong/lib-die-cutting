@@ -50,7 +50,7 @@ public final class LDieCuttingPrintSDK {
     public void init(Context ctx, String apiKey, LDieCuttingCallback cb) {
         if (initialized) return;
         this.callback = cb;
-        mainSDK = new MainSDK(apiKey, ctx.getApplicationContext(), new Listener(), false);
+        mainSDK = new MainSDK(apiKey, ctx.getApplicationContext(), new Listener(this), false);
         initialized = true;
     }
 
@@ -73,7 +73,7 @@ public final class LDieCuttingPrintSDK {
         ci.setShrinkVal(cfg.getShrinkVal());
         ci.setFinishPercent(cfg.getFinishPercent());
 
-        mainSDK = new MainSDK(apiKey, ctx.getApplicationContext(), ci, new Listener());
+        mainSDK = new MainSDK(apiKey, ctx.getApplicationContext(), ci, new Listener(this));
         initialized = true;
     }
 
@@ -226,31 +226,38 @@ public final class LDieCuttingPrintSDK {
 
     // ==================== SDK 回调 → 我们的回调 ====================
 
-    private class Listener implements IReturnMsgListener {
+    private static class Listener implements IReturnMsgListener {
+        private final java.lang.ref.WeakReference<LDieCuttingPrintSDK> ref;
+
+        Listener(LDieCuttingPrintSDK sdk) {
+            this.ref = new java.lang.ref.WeakReference<>(sdk);
+        }
+
         @Override public void onReceived(ReturnInfo ri) {
-            if (ri == null) return;
+            LDieCuttingPrintSDK sdk = ref.get();
+            if (sdk == null || ri == null) return;
             switch (ri.getAction()) {
                 case FirmwareVersion:
-                    status.setFirmwareVersion(ri.getFirmwareVersion());
-                    emitStatus();
+                    sdk.status.setFirmwareVersion(ri.getFirmwareVersion());
+                    sdk.emitStatus();
                     break;
                 case Status:
-                    handleStatus(ri.getCode().name());
+                    sdk.handleStatus(ri.getCode().name());
                     break;
                 case CanPrint:
-                    status.setState(LDieCuttingStatus.STATE_CAN_PRINT);
-                    status.setProgress(0.8f);
-                    emitStatus();
-                    emitProgress(0.8f);
+                    sdk.status.setState(LDieCuttingStatus.STATE_CAN_PRINT);
+                    sdk.status.setProgress(0.8f);
+                    sdk.emitStatus();
+                    sdk.emitProgress(0.8f);
                     break;
                 case Finish:
-                    status.setState(LDieCuttingStatus.STATE_IDLE);
-                    status.setProgress(1f);
-                    emitStatus();
-                    emitProgress(1f);
+                    sdk.status.setState(LDieCuttingStatus.STATE_IDLE);
+                    sdk.status.setProgress(1f);
+                    sdk.emitStatus();
+                    sdk.emitProgress(1f);
                     break;
                 case Error:
-                    handleError(ri.getCode().name());
+                    sdk.handleError(ri.getCode().name());
                     break;
             }
         }

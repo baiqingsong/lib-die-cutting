@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             btnCut, btnProfile, btnPrint, btnReboot, btnQuit, btnEnter, btnCalib,
             btnFrameCut;
 
-    private static final String API_KEY = "saikt13agrt6i13h";
+    private static final String API_KEY = "";
     private static final int REQ_PICK_IMAGE = 1001;
 
     @Override
