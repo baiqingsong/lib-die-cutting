@@ -2,6 +2,13 @@
 
 Android 打印切割一体机控制库（汇森智诺 MainSDK / CutSDK.aar 封装），支持普通切割、肖像切割、相框裁剪。
 
+## 本地构建
+
+```bash
+# 直接构建（gradle.properties 中 useLocalAar=true，自动使用 libs/CutSDK.aar）
+./gradlew assembleRelease
+```
+
 ## 引用
 
 ```groovy

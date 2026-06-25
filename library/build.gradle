@@ -29,13 +29,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
-    // 引入本地 AAR 依赖
-    repositories {
-        flatDir {
-            dirs 'libs'
-        }
-    }
 }
 
 afterEvaluate {
@@ -57,5 +50,11 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.9'
 
     // 打印切割一体机 SDK（MainSDK，USB HID）
-    api files('libs/CutSDK.aar')
+    // 本地开发：useLocalAar=true → 直接用 libs/CutSDK.aar
+    // JitPack  ：before_install 安装到 mavenLocal → maven 坐标
+    if (findProperty('useLocalAar') == 'true') {
+        api files('libs/CutSDK.aar')
+    } else {
+        api 'com.hszn:cutsdk:1.0.0'
+    }
 }
