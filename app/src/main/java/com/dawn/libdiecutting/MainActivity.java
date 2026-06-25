@@ -2,7 +2,11 @@ package com.dawn.libdiecutting;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.OpenableColumns;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -26,9 +30,11 @@ public class MainActivity extends AppCompatActivity {
     private LDieCuttingPrintSDK sdk;
     private TextView tvStatus, tvProgress, tvLog;
     private Button btnInit, btnFw, btnRelease, btnLeft, btnRight, btnDown, btnStop,
-            btnCut, btnProfile, btnPrint, btnReboot, btnQuit, btnEnter, btnCalib;
+            btnCut, btnProfile, btnPrint, btnReboot, btnQuit, btnEnter, btnCalib,
+            btnFrameCut;
 
     private static final String API_KEY = "saikt13agrt6i13h";
+    private static final int REQ_PICK_IMAGE = 1001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +63,10 @@ public class MainActivity extends AppCompatActivity {
         btnQuit = findViewById(R.id.btn_quit);
         btnEnter = findViewById(R.id.btn_enter);
         btnCalib = findViewById(R.id.btn_calib);
+
+        // ==== 相框裁剪按钮 ====
+        btnFrameCut = findViewById(R.id.btn_frame_cut);
+        btnFrameCut.setOnClickListener(v -> openImagePicker());
 
         btnInit.setOnClickListener(v -> {
             log("初始化...");
@@ -110,11 +120,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void enableAll() {
         for (Button b : new Button[]{btnFw, btnRelease, btnLeft, btnRight, btnDown, btnStop,
-                btnCut, btnProfile, btnPrint, btnReboot, btnQuit, btnEnter, btnCalib}) b.setEnabled(true);
+                btnCut, btnProfile, btnPrint, btnReboot, btnQuit, btnEnter, btnCalib, btnFrameCut}) b.setEnabled(true);
     }
     private void disableAll() {
         for (Button b : new Button[]{btnFw, btnRelease, btnLeft, btnRight, btnDown, btnStop,
-                btnCut, btnProfile, btnPrint, btnReboot, btnQuit, btnEnter, btnCalib}) b.setEnabled(false);
+                btnCut, btnProfile, btnPrint, btnReboot, btnQuit, btnEnter, btnCalib, btnFrameCut}) b.setEnabled(false);
     }
     private void log(String msg) { tvLog.setText(tvLog.getText() + "\n" + msg); }
 
@@ -166,4 +176,71 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void logBg(String msg) { runOnUiThread(() -> log(msg)); }
+
+    // ==================== 相框裁剪：SD卡图片 → 图片处理 → 切割 ====================
+
+    /** 打开系统文件选择器，选取 SD 卡上的图片 */
+    private void openImagePicker() {
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("image/*");
+        startActivityForResult(intent, REQ_PICK_IMAGE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQ_PICK_IMAGE && resultCode == RESULT_OK && data != null) {
+            Uri uri = data.getData();
+            if (uri != null) {
+                // 持久化读取权限（重启后仍可访问）
+                getContentResolver().takePersistableUriPermission(uri,
+                        Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                processAndCutImageFromUri(uri);
+            }
+        }
+    }
+
+    /**
+     * 从 Uri 加载 SD 卡图片 → invertAlpha → 缩放 1200x1800 → 传给设备切割
+     * 图片处理流程与 processImage() 一致
+     */
+    private void processAndCutImageFromUri(Uri uri) {
+        new Thread(() -> {
+            try {
+                // 获取文件名用于日志
+                String fileName = "frame_cut.png";
+                Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+                if (cursor != null) {
+                    int nameIdx = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+                    if (nameIdx >= 0 && cursor.moveToFirst()) {
+                        fileName = cursor.getString(nameIdx);
+                    }
+                    cursor.close();
+                }
+
+                // ① 从 SD 卡加载图片
+                Bitmap src = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri));
+                if (src == null) { logBg("❌ 无法加载图片: " + fileName); return; }
+                logBg("📷 " + fileName + ": " + src.getWidth() + "x" + src.getHeight());
+
+                // ② 透明→黑色, 不透明→透明 (与 processImage 一致)
+                Bitmap result = invertAlpha(src);
+                src.recycle();
+
+                // ③ 缩放到 1200x1800 (与 processImage 一致)
+                Bitmap scaled = Bitmap.createScaledBitmap(result, 1200, 1800, true);
+                result.recycle();
+                logBg("缩放: " + scaled.getWidth() + "x" + scaled.getHeight());
+
+                // ④ 传给设备进行切割
+                logBg("🔪 开始相框切割...");
+                sdk.cut(scaled, "frame_cut.png");
+                // scaled 由 CutSDK 内部管理，不要在这里 recycle
+
+            } catch (Exception e) {
+                logBg("❌ " + e.getMessage());
+            }
+        }).start();
+    }
 }
