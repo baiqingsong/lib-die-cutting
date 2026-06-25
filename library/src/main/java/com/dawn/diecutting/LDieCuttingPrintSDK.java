@@ -48,7 +48,7 @@ public final class LDieCuttingPrintSDK {
     public void init(Context ctx, String apiKey, LDieCuttingCallback cb) {
         if (initialized) return;
         this.callback = cb;
-        mainSDK = new MainSDK(apiKey, ctx.getApplicationContext(), new Listener());
+        mainSDK = new MainSDK(apiKey, ctx.getApplicationContext(), new Listener(), false);
         initialized = true;
     }
 
