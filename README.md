@@ -1,6 +1,6 @@
 # lib-die-cutting
 
-Android 打印切割一体机控制库（汇森智诺 MainSDK / CutSDK.aar）
+Android 打印切割一体机控制库（汇森智诺 MainSDK / CutSDK.aar 封装），支持普通切割、肖像切割、相框裁剪。
 
 ## 引用
 
@@ -15,10 +15,15 @@ dependencies { implementation 'com.github.baiqingsong:lib-die-cutting:Tag' }
 LDieCuttingPrintSDK sdk = LDieCuttingPrintSDK.getInstance();
 sdk.init(context, apiKey, callback);  // 密钥外部传入
 
-// 流程: ①仅打印 → ②手动放纸 → ③切割
-sdk.printOnly();
+// ===== 普通切割 =====
+sdk.printOnly();  // ① 仅打印
+// ... 手动放纸 ...
 Bitmap bmp = LDieCuttingPrintSDK.loadBitmap(ctx, R.drawable.test4);
-sdk.cut(bmp, "test.png");
+sdk.cut(bmp, "test.png");  // ② 切割
+
+// ===== 相框裁剪（SD 卡路径 → 一步完成）=====
+sdk.frameCut("/sdcard/DCIM/photo.jpg");
+
 sdk.release();
 ```
 
@@ -33,6 +38,7 @@ sdk.release();
 | `release()` | 释放资源 |
 | `cut(Bitmap, fileName)` | 普通切割 |
 | `profileCut(Bitmap, fileName)` | 肖像切割 |
+| `frameCut(filePath)` | 相框裁剪（SD卡路径 → 加载 → 预处理 → 切割，一步完成） |
 | `printOnly()` | 仅打印 |
 | `paperOut()/paperIn()` | 退纸/进纸 |
 | `moveLeft()/moveRight()` | 左/右移刀座 |
@@ -42,6 +48,16 @@ sdk.release();
 | `calibration()` | 校准(6s后查结果) |
 | `firmwareVersion()` | 查询固件版本 |
 | `loadBitmap(ctx, resId)` | 96DPI 加载图片(static) |
+| `invertAlpha(Bitmap)` | Alpha 反转：透明→黑/不透明→透(static) |
+
+### 相框裁剪流程
+
+```java
+// 传入 SD 卡图片路径，内部自动完成：加载 → invertAlpha → 缩放1200×1800 → 切割
+sdk.frameCut("/sdcard/DCIM/photo.jpg");
+```
+
+> `frameCut` 内部步骤：① `BitmapFactory.decodeFile(path)` 加载 ② `invertAlpha()` 透明反转 ③ `createScaledBitmap(1200, 1800)` 缩放 ④ `mainSDK.process()` 发送切割
 
 ### LDieCuttingConfig
 

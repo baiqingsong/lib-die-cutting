@@ -15,6 +15,8 @@ import com.hszn.cutsdk.enums.ActionTyepEnum;
 import com.hszn.cutsdk.enums.MaterialTyepEnum;
 import com.hszn.cutsdk.interfaces.IReturnMsgListener;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 
 /**
@@ -107,6 +109,22 @@ public final class LDieCuttingPrintSDK {
         mainSDK.process(info);
     }
 
+    /** 相框裁剪 — 从 SD 卡路径加载图片 → 图片预处理 → 发送设备切割（一步完成） */
+    public void frameCut(String filePath) {
+        checkInit();
+        // ① 从 SD 卡加载图片
+        Bitmap src = loadBitmapFromPath(filePath);
+        if (src == null) throw new IllegalArgumentException("无法加载图片: " + filePath);
+        // ② 图片预处理：invertAlpha + 缩放到 1200×1800
+        Bitmap processed = processFrameBitmap(src);
+        // ③ 发送设备切割
+        InputInfo info = new InputInfo();
+        info.setImgBitmap(processed);
+        info.setPic("frame_cut.png");
+        setCutting();
+        mainSDK.process(info);
+    }
+
     /** 仅打印 — 对应 printTest() */
     public void printOnly() {
         checkInit();
@@ -150,6 +168,45 @@ public final class LDieCuttingPrintSDK {
         opts.inScaled = false;
         opts.inPreferredConfig = Bitmap.Config.ARGB_8888;
         return BitmapFactory.decodeResource(ctx.getResources(), resId, opts);
+    }
+
+    /** 从文件路径加载图片（内部使用，支持 SD 卡、外部存储等） */
+    private static Bitmap loadBitmapFromPath(String filePath) {
+        BitmapFactory.Options opts = new BitmapFactory.Options();
+        opts.inPreferredConfig = Bitmap.Config.ARGB_8888;
+        File f = new File(filePath);
+        if (!f.exists()) return null;
+        try {
+            return BitmapFactory.decodeStream(new FileInputStream(f), null, opts);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    /** 相框图片预处理：透明→黑色, 不透明→透明（Alpha 反转） */
+    public static Bitmap invertAlpha(Bitmap src) {
+        int w = src.getWidth(), h = src.getHeight();
+        Bitmap out = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+        int[] pixels = new int[w * h];
+        src.getPixels(pixels, 0, w, 0, 0, w, h);
+        for (int i = 0; i < pixels.length; i++) {
+            int alpha = (pixels[i] >> 24) & 0xFF;
+            pixels[i] = (alpha == 0) ? 0xFF000000 : 0x00000000;
+        }
+        out.setPixels(pixels, 0, w, 0, 0, w, h);
+        return out;
+    }
+
+    /**
+     * 相框图片预处理：invertAlpha → 缩放到 1200×1800（内部使用）
+     * @return 处理后的 Bitmap
+     */
+    private static Bitmap processFrameBitmap(Bitmap src) {
+        Bitmap result = invertAlpha(src);
+        src.recycle();
+        Bitmap scaled = Bitmap.createScaledBitmap(result, 1200, 1800, true);
+        result.recycle();
+        return scaled;
     }
 
     // ==================== 内部 ====================

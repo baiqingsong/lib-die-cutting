@@ -138,10 +138,10 @@ public class MainActivity extends AppCompatActivity {
                 logBg("frame.png: " + src.getWidth() + "x" + src.getHeight());
 
                 // 透明→黑色, 不透明→透明
-                Bitmap result = invertAlpha(src);
+                Bitmap result = LDieCuttingPrintSDK.invertAlpha(src);
                 src.recycle();
 
-                // 缩放到 1800x1200
+                // 缩放到 1200x1800
                 Bitmap scaled = Bitmap.createScaledBitmap(result, 1200, 1800, true);
                 result.recycle();
                 logBg("缩放: " + scaled.getWidth() + "x" + scaled.getHeight());
@@ -160,19 +160,6 @@ public class MainActivity extends AppCompatActivity {
                 logBg("❌ " + e.getMessage());
             }
         }).start();
-    }
-
-    private Bitmap invertAlpha(Bitmap src) {
-        int w = src.getWidth(), h = src.getHeight();
-        Bitmap out = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-        int[] pixels = new int[w * h];
-        src.getPixels(pixels, 0, w, 0, 0, w, h);
-        for (int i = 0; i < pixels.length; i++) {
-            int alpha = (pixels[i] >> 24) & 0xFF;
-            pixels[i] = (alpha == 0) ? 0xFF000000 : 0x00000000;
-        }
-        out.setPixels(pixels, 0, w, 0, 0, w, h);
-        return out;
     }
 
     private void logBg(String msg) { runOnUiThread(() -> log(msg)); }
@@ -203,12 +190,11 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * 从 Uri 加载 SD 卡图片 → invertAlpha → 缩放 1200x1800 → 传给设备切割
-     * 图片处理流程与 processImage() 一致
+     * 演示用（Content URI），生产环境直接用 sdk.frameCut(filePath) 一步完成
      */
     private void processAndCutImageFromUri(Uri uri) {
         new Thread(() -> {
             try {
-                // 获取文件名用于日志
                 String fileName = "frame_cut.png";
                 Cursor cursor = getContentResolver().query(uri, null, null, null, null);
                 if (cursor != null) {
@@ -224,19 +210,17 @@ public class MainActivity extends AppCompatActivity {
                 if (src == null) { logBg("❌ 无法加载图片: " + fileName); return; }
                 logBg("📷 " + fileName + ": " + src.getWidth() + "x" + src.getHeight());
 
-                // ② 透明→黑色, 不透明→透明 (与 processImage 一致)
-                Bitmap result = invertAlpha(src);
+                // ② 图片预处理（invertAlpha + 缩放到 1200x1800）
+                Bitmap result = LDieCuttingPrintSDK.invertAlpha(src);
                 src.recycle();
-
-                // ③ 缩放到 1200x1800 (与 processImage 一致)
-                Bitmap scaled = Bitmap.createScaledBitmap(result, 1200, 1800, true);
+                Bitmap processed = Bitmap.createScaledBitmap(result, 1200, 1800, true);
                 result.recycle();
-                logBg("缩放: " + scaled.getWidth() + "x" + scaled.getHeight());
+                logBg("处理后: " + processed.getWidth() + "x" + processed.getHeight());
 
-                // ④ 传给设备进行切割
+                // ③ 传给设备进行切割
                 logBg("🔪 开始相框切割...");
-                sdk.cut(scaled, "frame_cut.png");
-                // scaled 由 CutSDK 内部管理，不要在这里 recycle
+                sdk.cut(processed, "frame_cut.png");
+                // processed 由 CutSDK 内部管理，不要在这里 recycle
 
             } catch (Exception e) {
                 logBg("❌ " + e.getMessage());
