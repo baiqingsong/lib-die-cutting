@@ -5,7 +5,7 @@ FAILURE: Build completed with 10 failures.
 1: Task failed with an exception.
 -----------
 * What went wrong:
-Execution failed for task ':app:checkDebugAarMetadata'.
+Execution failed for task ':app:checkDebugDuplicateClasses'.
 > Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
    > Could not find com.hszn:cutsdk:1.0.0.
      Searched in the following locations:
@@ -21,7 +21,7 @@ Execution failed for task ':app:checkDebugAarMetadata'.
 > Run with --scan to get full insights.
 
 * Exception is:
-org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:checkDebugAarMetadata'.
+org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:checkDebugDuplicateClasses'.
 	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:38)
 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
@@ -57,6 +57,9 @@ Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfigurat
 	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:119)
 	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:375)
 	at org.gradle.api.internal.file.CompositeFileCollection.lambda$visitContents$0(CompositeFileCollection.java:119)
+Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfiguration$ArtifactResolveException: Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
+Ask Gemini
+
 	at org.gradle.api.internal.tasks.PropertyFileCollection.visitChildren(PropertyFileCollection.java:48)
 	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:119)
 	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:375)
@@ -96,9 +99,6 @@ Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfigurat
 	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:27)
 	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:44)
 	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:33)
-Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfiguration$ArtifactResolveException: Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
-Ask Gemini
-
 	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:76)
 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:139)
 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:128)
@@ -143,8 +143,11 @@ Required by:
 2: Task failed with an exception.
 -----------
 * What went wrong:
-Execution failed for task ':app:mapDebugSourceSetPaths'.
+Execution failed for task ':app:checkDebugAarMetadata'.
 > Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
+Caused by: org.gradle.internal.resolve.ModuleVersionNotFoundException: Could not find com.hszn:cutsdk:1.0.0.
+Ask Gemini
+
    > Could not find com.hszn:cutsdk:1.0.0.
      Searched in the following locations:
        - https://dl.google.com/dl/android/maven2/com/hszn/cutsdk/1.0.0/cutsdk-1.0.0.pom
@@ -159,7 +162,7 @@ Execution failed for task ':app:mapDebugSourceSetPaths'.
 > Run with --scan to get full insights.
 
 * Exception is:
-org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:mapDebugSourceSetPaths'.
+org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:checkDebugAarMetadata'.
 	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:38)
 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
@@ -190,16 +193,6 @@ Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfigurat
 	at org.gradle.api.internal.artifacts.configurations.DefaultConfiguration.access$3700(DefaultConfiguration.java:159)
 	at org.gradle.api.internal.artifacts.configurations.DefaultConfiguration$DefaultResolutionHost.rethrowFailure(DefaultConfiguration.java:2174)
 	at org.gradle.api.internal.artifacts.configurations.DefaultConfiguration$ConfigurationFileCollection.visitContents(DefaultConfiguration.java:1496)
-	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:375)
-	at org.gradle.api.internal.file.collections.DefaultConfigurableFileCollection.lambda$calculateFinalizedValue$0(DefaultConfigurableFileCollection.java:241)
-	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:64)
-	at org.gradle.api.internal.file.collections.DefaultConfigurableFileCollection$UnresolvedItemsCollector.visitContents(DefaultConfigurableFileCollection.java:372)
-Caused by: org.gradle.internal.resolve.ModuleVersionNotFoundException: Could not find com.hszn:cutsdk:1.0.0.
-Ask Gemini
-
-	at org.gradle.api.internal.file.collections.DefaultConfigurableFileCollection.calculateFinalizedValue(DefaultConfigurableFileCollection.java:241)
-	at org.gradle.api.internal.file.collections.DefaultConfigurableFileCollection.visitChildren(DefaultConfigurableFileCollection.java:277)
-	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:119)
 	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:375)
 	at org.gradle.api.internal.file.CompositeFileCollection.lambda$visitContents$0(CompositeFileCollection.java:119)
 	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:64)
@@ -245,9 +238,6 @@ Ask Gemini
 	at org.gradle.internal.execution.steps.AssignWorkspaceStep.execute(AssignWorkspaceStep.java:40)
 	at org.gradle.internal.execution.steps.AssignWorkspaceStep.execute(AssignWorkspaceStep.java:30)
 	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:37)
-Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfiguration$ArtifactResolveException: Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
-Ask Gemini
-
 	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:27)
 	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:44)
 	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:33)
@@ -263,6 +253,9 @@ Ask Gemini
 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
+Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfiguration$ArtifactResolveException: Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
+Ask Gemini
+
 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:199)
 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
@@ -297,11 +290,8 @@ Required by:
 
 3: Task failed with an exception.
 -----------
-Caused by: org.gradle.internal.resolve.ModuleVersionNotFoundException: Could not find com.hszn:cutsdk:1.0.0.
-Ask Gemini
-
 * What went wrong:
-Execution failed for task ':app:mergeDebugResources'.
+Execution failed for task ':app:mapDebugSourceSetPaths'.
 > Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
    > Could not find com.hszn:cutsdk:1.0.0.
      Searched in the following locations:
@@ -311,13 +301,16 @@ Execution failed for task ':app:mergeDebugResources'.
        - https://jitpack.io/com/hszn/cutsdk/1.0.0/cutsdk-1.0.0.pom
      Required by:
          project :app > project :library
+Caused by: org.gradle.internal.resolve.ModuleVersionNotFoundException: Could not find com.hszn:cutsdk:1.0.0.
+Ask Gemini
+
 
 * Try:
 > Run with --info or --debug option to get more log output.
 > Run with --scan to get full insights.
 
 * Exception is:
-org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:mergeDebugResources'.
+org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:mapDebugSourceSetPaths'.
 	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:38)
 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
@@ -352,9 +345,6 @@ Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfigurat
 	at org.gradle.api.internal.file.collections.DefaultConfigurableFileCollection.lambda$calculateFinalizedValue$0(DefaultConfigurableFileCollection.java:241)
 	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:64)
 	at org.gradle.api.internal.file.collections.DefaultConfigurableFileCollection$UnresolvedItemsCollector.visitContents(DefaultConfigurableFileCollection.java:372)
-Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfiguration$ArtifactResolveException: Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
-Ask Gemini
-
 	at org.gradle.api.internal.file.collections.DefaultConfigurableFileCollection.calculateFinalizedValue(DefaultConfigurableFileCollection.java:241)
 	at org.gradle.api.internal.file.collections.DefaultConfigurableFileCollection.visitChildren(DefaultConfigurableFileCollection.java:277)
 	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:119)
@@ -384,6 +374,9 @@ Ask Gemini
 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
 	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfiguration$ArtifactResolveException: Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
+Ask Gemini
+
 	at org.gradle.internal.execution.steps.BuildOperationStep.operation(BuildOperationStep.java:34)
 	at org.gradle.internal.execution.steps.CaptureStateBeforeExecutionStep.captureExecutionState(CaptureStateBeforeExecutionStep.java:130)
 	at org.gradle.internal.execution.steps.CaptureStateBeforeExecutionStep.lambda$execute$0(CaptureStateBeforeExecutionStep.java:75)
@@ -453,7 +446,10 @@ Required by:
 4: Task failed with an exception.
 -----------
 * What went wrong:
-Execution failed for task ':app:processDebugMainManifest'.
+Execution failed for task ':app:mergeDebugResources'.
+Caused by: org.gradle.internal.resolve.ModuleVersionNotFoundException: Could not find com.hszn:cutsdk:1.0.0.
+Ask Gemini
+
 > Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
    > Could not find com.hszn:cutsdk:1.0.0.
      Searched in the following locations:
@@ -469,7 +465,7 @@ Execution failed for task ':app:processDebugMainManifest'.
 > Run with --scan to get full insights.
 
 * Exception is:
-org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:processDebugMainManifest'.
+org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:mergeDebugResources'.
 	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:38)
 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
@@ -487,9 +483,6 @@ org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:pro
 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:327)
 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$InvokeNodeExecutorsAction.execute(DefaultTaskExecutionGraph.java:314)
 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:307)
-Caused by: org.gradle.internal.resolve.ModuleVersionNotFoundException: Could not find com.hszn:cutsdk:1.0.0.
-Ask Gemini
-
 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:293)
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:417)
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:339)
@@ -504,6 +497,13 @@ Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfigurat
 	at org.gradle.api.internal.artifacts.configurations.DefaultConfiguration$DefaultResolutionHost.rethrowFailure(DefaultConfiguration.java:2174)
 	at org.gradle.api.internal.artifacts.configurations.DefaultConfiguration$ConfigurationFileCollection.visitContents(DefaultConfiguration.java:1496)
 	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:375)
+	at org.gradle.api.internal.file.collections.DefaultConfigurableFileCollection.lambda$calculateFinalizedValue$0(DefaultConfigurableFileCollection.java:241)
+	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:64)
+	at org.gradle.api.internal.file.collections.DefaultConfigurableFileCollection$UnresolvedItemsCollector.visitContents(DefaultConfigurableFileCollection.java:372)
+	at org.gradle.api.internal.file.collections.DefaultConfigurableFileCollection.calculateFinalizedValue(DefaultConfigurableFileCollection.java:241)
+	at org.gradle.api.internal.file.collections.DefaultConfigurableFileCollection.visitChildren(DefaultConfigurableFileCollection.java:277)
+	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:119)
+	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:375)
 	at org.gradle.api.internal.file.CompositeFileCollection.lambda$visitContents$0(CompositeFileCollection.java:119)
 	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:64)
 	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:89)
@@ -513,6 +513,9 @@ Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfigurat
 	at org.gradle.api.internal.file.CompositeFileCollection.lambda$visitContents$0(CompositeFileCollection.java:119)
 	at org.gradle.api.internal.tasks.PropertyFileCollection.visitChildren(PropertyFileCollection.java:48)
 	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:119)
+Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfiguration$ArtifactResolveException: Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
+Ask Gemini
+
 	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:375)
 	at org.gradle.internal.fingerprint.impl.DefaultFileCollectionSnapshotter.snapshot(DefaultFileCollectionSnapshotter.java:51)
 	at org.gradle.internal.execution.fingerprint.impl.DefaultInputFingerprinter$InputCollectingVisitor.visitInputFileProperty(DefaultInputFingerprinter.java:131)
@@ -563,9 +566,6 @@ Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfigurat
 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
-Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfiguration$ArtifactResolveException: Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
-Ask Gemini
-
 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:199)
 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
@@ -601,9 +601,12 @@ Required by:
 5: Task failed with an exception.
 -----------
 * What went wrong:
-Execution failed for task ':app:checkDebugDuplicateClasses'.
+Execution failed for task ':app:processDebugMainManifest'.
 > Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
    > Could not find com.hszn:cutsdk:1.0.0.
+Caused by: org.gradle.internal.resolve.ModuleVersionNotFoundException: Could not find com.hszn:cutsdk:1.0.0.
+Ask Gemini
+
      Searched in the following locations:
        - https://dl.google.com/dl/android/maven2/com/hszn/cutsdk/1.0.0/cutsdk-1.0.0.pom
        - https://repo.maven.apache.org/maven2/com/hszn/cutsdk/1.0.0/cutsdk-1.0.0.pom
@@ -617,7 +620,7 @@ Execution failed for task ':app:checkDebugDuplicateClasses'.
 > Run with --scan to get full insights.
 
 * Exception is:
-org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:checkDebugDuplicateClasses'.
+org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:processDebugMainManifest'.
 	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:38)
 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
@@ -652,9 +655,6 @@ Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfigurat
 	at org.gradle.api.internal.file.CompositeFileCollection.lambda$visitContents$0(CompositeFileCollection.java:119)
 	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:64)
 	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:89)
-Caused by: org.gradle.internal.resolve.ModuleVersionNotFoundException: Could not find com.hszn:cutsdk:1.0.0.
-Ask Gemini
-
 	at org.gradle.api.internal.file.DefaultFileCollectionFactory$ResolvingFileCollection.visitChildren(DefaultFileCollectionFactory.java:333)
 	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:119)
 	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:375)
@@ -697,6 +697,9 @@ Ask Gemini
 	at org.gradle.internal.execution.steps.AssignWorkspaceStep.execute(AssignWorkspaceStep.java:30)
 	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:37)
 	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:27)
+Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfiguration$ArtifactResolveException: Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
+Ask Gemini
+
 	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:44)
 	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:33)
 	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:76)
@@ -711,9 +714,6 @@ Ask Gemini
 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
-Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfiguration$ArtifactResolveException: Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
-Ask Gemini
-
 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:199)
 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
@@ -761,6 +761,9 @@ Execution failed for task ':app:desugarDebugFileDependencies'.
          project :app > project :library
 
 * Try:
+Caused by: org.gradle.internal.resolve.ModuleVersionNotFoundException: Could not find com.hszn:cutsdk:1.0.0.
+Ask Gemini
+
 > Run with --info or --debug option to get more log output.
 > Run with --scan to get full insights.
 
@@ -800,9 +803,6 @@ Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfigurat
 	at org.gradle.api.internal.file.collections.DefaultConfigurableFileCollection.lambda$calculateFinalizedValue$0(DefaultConfigurableFileCollection.java:241)
 	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:64)
 	at org.gradle.api.internal.file.collections.DefaultConfigurableFileCollection$UnresolvedItemsCollector.visitContents(DefaultConfigurableFileCollection.java:372)
-Caused by: org.gradle.internal.resolve.ModuleVersionNotFoundException: Could not find com.hszn:cutsdk:1.0.0.
-Ask Gemini
-
 	at org.gradle.api.internal.file.collections.DefaultConfigurableFileCollection.calculateFinalizedValue(DefaultConfigurableFileCollection.java:241)
 	at org.gradle.api.internal.file.collections.DefaultConfigurableFileCollection.visitChildren(DefaultConfigurableFileCollection.java:277)
 	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:119)
@@ -852,15 +852,15 @@ Ask Gemini
 	at org.gradle.internal.execution.steps.AssignWorkspaceStep.execute(AssignWorkspaceStep.java:30)
 	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:37)
 	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:27)
-Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfiguration$ArtifactResolveException: Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
-Ask Gemini
-
 	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:44)
 	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:33)
 	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:76)
 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:139)
 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.execute(ExecuteActionsTaskExecuter.java:128)
 	at org.gradle.api.internal.tasks.execution.CleanupStaleOutputsExecuter.execute(CleanupStaleOutputsExecuter.java:77)
+Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfiguration$ArtifactResolveException: Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
+Ask Gemini
+
 	at org.gradle.api.internal.tasks.execution.FinalizePropertiesTaskExecuter.execute(FinalizePropertiesTaskExecuter.java:46)
 	at org.gradle.api.internal.tasks.execution.ResolveTaskExecutionModeExecuter.execute(ResolveTaskExecutionModeExecuter.java:51)
 	at org.gradle.api.internal.tasks.execution.SkipTaskWithNoActionsExecuter.execute(SkipTaskWithNoActionsExecuter.java:57)
@@ -906,14 +906,14 @@ Required by:
 * What went wrong:
 Execution failed for task ':library:generateDebugRFile'.
 > Could not resolve all files for configuration ':library:debugCompileClasspath'.
+Caused by: org.gradle.internal.resolve.ModuleVersionNotFoundException: Could not find com.hszn:cutsdk:1.0.0.
+Ask Gemini
+
    > Could not find com.hszn:cutsdk:1.0.0.
      Required by:
          project :library
 
 * Try:
-Caused by: org.gradle.internal.resolve.ModuleVersionNotFoundException: Could not find com.hszn:cutsdk:1.0.0.
-Ask Gemini
-
 > Run with --info or --debug option to get more log output.
 > Run with --scan to get full insights.
 
@@ -939,6 +939,36 @@ org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':library
 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:293)
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:417)
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:339)
+	at org.gradle.execution.plan.DefaultPlanExecutor.process(DefaultPlanExecutor.java:96)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.executeWithServices(DefaultTaskExecutionGraph.java:140)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.execute(DefaultTaskExecutionGraph.java:125)
+	at org.gradle.execution.SelectedTaskExecutionAction.execute(SelectedTaskExecutionAction.java:39)
+	at org.gradle.execution.DryRunBuildExecutionAction.execute(DryRunBuildExecutionAction.java:51)
+	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:54)
+	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:43)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:199)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor.execute(BuildOperationFiringBuildWorkerExecutor.java:40)
+	at org.gradle.internal.build.DefaultBuildLifecycleController.lambda$executeTasks$7(DefaultBuildLifecycleController.java:161)
+	at org.gradle.internal.model.StateTransitionController.doTransition(StateTransitionController.java:247)
+	at org.gradle.internal.model.StateTransitionController.lambda$tryTransition$7(StateTransitionController.java:174)
+	at org.gradle.internal.work.DefaultSynchronizer.withLock(DefaultSynchronizer.java:44)
+	at org.gradle.internal.model.StateTransitionController.tryTransition(StateTransitionController.java:174)
+	at org.gradle.internal.build.DefaultBuildLifecycleController.executeTasks(DefaultBuildLifecycleController.java:161)
+	at org.gradle.internal.build.DefaultBuildWorkGraphController$DefaultBuildWorkGraph.runWork(DefaultBuildWorkGraphController.java:156)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:249)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:109)
+	at org.gradle.composite.internal.DefaultBuildController.doRun(DefaultBuildController.java:164)
+	at org.gradle.composite.internal.DefaultBuildController.access$000(DefaultBuildController.java:45)
+	at org.gradle.composite.internal.DefaultBuildController$BuildOpRunnable.run(DefaultBuildController.java:183)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
 	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
@@ -959,9 +989,6 @@ Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfigurat
 	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:375)
 	at org.gradle.api.internal.file.CompositeFileCollection.lambda$visitContents$0(CompositeFileCollection.java:119)
 	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:64)
-Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfiguration$ArtifactResolveException: Could not resolve all files for configuration ':library:debugCompileClasspath'.
-Ask Gemini
-
 	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:89)
 	at org.gradle.api.internal.file.DefaultFileCollectionFactory$ResolvingFileCollection.visitChildren(DefaultFileCollectionFactory.java:333)
 	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:119)
@@ -971,6 +998,9 @@ Ask Gemini
 	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:119)
 	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:375)
 	at org.gradle.internal.fingerprint.impl.DefaultFileCollectionSnapshotter.snapshot(DefaultFileCollectionSnapshotter.java:51)
+Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfiguration$ArtifactResolveException: Could not resolve all files for configuration ':library:debugCompileClasspath'.
+Ask Gemini
+
 	at org.gradle.internal.execution.fingerprint.impl.DefaultInputFingerprinter$InputCollectingVisitor.visitInputFileProperty(DefaultInputFingerprinter.java:131)
 	at org.gradle.api.internal.tasks.execution.TaskExecution.visitRegularInputs(TaskExecution.java:322)
 	at org.gradle.internal.execution.fingerprint.impl.DefaultInputFingerprinter.fingerprintInputProperties(DefaultInputFingerprinter.java:61)
@@ -1035,6 +1065,36 @@ Ask Gemini
 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:293)
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:417)
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:339)
+	at org.gradle.execution.plan.DefaultPlanExecutor.process(DefaultPlanExecutor.java:96)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.executeWithServices(DefaultTaskExecutionGraph.java:140)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.execute(DefaultTaskExecutionGraph.java:125)
+	at org.gradle.execution.SelectedTaskExecutionAction.execute(SelectedTaskExecutionAction.java:39)
+	at org.gradle.execution.DryRunBuildExecutionAction.execute(DryRunBuildExecutionAction.java:51)
+	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:54)
+	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:43)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:204)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:199)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
+	at org.gradle.internal.operations.DefaultBuildOperationExecutor.call(DefaultBuildOperationExecutor.java:73)
+	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor.execute(BuildOperationFiringBuildWorkerExecutor.java:40)
+	at org.gradle.internal.build.DefaultBuildLifecycleController.lambda$executeTasks$7(DefaultBuildLifecycleController.java:161)
+	at org.gradle.internal.model.StateTransitionController.doTransition(StateTransitionController.java:247)
+	at org.gradle.internal.model.StateTransitionController.lambda$tryTransition$7(StateTransitionController.java:174)
+	at org.gradle.internal.work.DefaultSynchronizer.withLock(DefaultSynchronizer.java:44)
+	at org.gradle.internal.model.StateTransitionController.tryTransition(StateTransitionController.java:174)
+	at org.gradle.internal.build.DefaultBuildLifecycleController.executeTasks(DefaultBuildLifecycleController.java:161)
+	at org.gradle.internal.build.DefaultBuildWorkGraphController$DefaultBuildWorkGraph.runWork(DefaultBuildWorkGraphController.java:156)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:249)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:109)
+	at org.gradle.composite.internal.DefaultBuildController.doRun(DefaultBuildController.java:164)
+	at org.gradle.composite.internal.DefaultBuildController.access$000(DefaultBuildController.java:45)
+	at org.gradle.composite.internal.DefaultBuildController$BuildOpRunnable.run(DefaultBuildController.java:183)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
 	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
@@ -1057,9 +1117,6 @@ Execution failed for task ':app:mergeDebugAssets'.
        - https://repo.maven.apache.org/maven2/com/hszn/cutsdk/1.0.0/cutsdk-1.0.0.pom
        - file:/C:/Users/bqsbq/.m2/repository/com/hszn/cutsdk/1.0.0/cutsdk-1.0.0.pom
        - https://jitpack.io/com/hszn/cutsdk/1.0.0/cutsdk-1.0.0.pom
-Caused by: org.gradle.internal.resolve.ModuleVersionNotFoundException: Could not find com.hszn:cutsdk:1.0.0.
-Ask Gemini
-
      Required by:
          project :app > project :library
 
@@ -1077,6 +1134,9 @@ org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:mer
 	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:199)
 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:66)
 	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:59)
+Caused by: org.gradle.internal.resolve.ModuleVersionNotFoundException: Could not find com.hszn:cutsdk:1.0.0.
+Ask Gemini
+
 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:157)
 	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:59)
 	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:53)
@@ -1120,9 +1180,6 @@ Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfigurat
 	at org.gradle.internal.fingerprint.impl.DefaultFileCollectionSnapshotter.snapshot(DefaultFileCollectionSnapshotter.java:51)
 	at org.gradle.internal.execution.fingerprint.impl.DefaultInputFingerprinter$InputCollectingVisitor.visitInputFileProperty(DefaultInputFingerprinter.java:131)
 	at org.gradle.api.internal.tasks.execution.TaskExecution.visitRegularInputs(TaskExecution.java:322)
-Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfiguration$ArtifactResolveException: Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
-Ask Gemini
-
 	at org.gradle.internal.execution.fingerprint.impl.DefaultInputFingerprinter.fingerprintInputProperties(DefaultInputFingerprinter.java:61)
 	at org.gradle.internal.execution.steps.CaptureStateBeforeExecutionStep.captureExecutionStateWithOutputs(CaptureStateBeforeExecutionStep.java:193)
 	at org.gradle.internal.execution.steps.CaptureStateBeforeExecutionStep.lambda$captureExecutionState$1(CaptureStateBeforeExecutionStep.java:141)
@@ -1150,6 +1207,9 @@ Ask Gemini
 	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:43)
 	at org.gradle.internal.execution.steps.LoadPreviousExecutionStateStep.execute(LoadPreviousExecutionStateStep.java:31)
 	at org.gradle.internal.execution.steps.AssignWorkspaceStep.lambda$execute$0(AssignWorkspaceStep.java:40)
+Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfiguration$ArtifactResolveException: Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
+Ask Gemini
+
 	at org.gradle.api.internal.tasks.execution.TaskExecution$4.withWorkspace(TaskExecution.java:281)
 	at org.gradle.internal.execution.steps.AssignWorkspaceStep.execute(AssignWorkspaceStep.java:40)
 	at org.gradle.internal.execution.steps.AssignWorkspaceStep.execute(AssignWorkspaceStep.java:30)
@@ -1205,6 +1265,9 @@ Required by:
 -----------
 * What went wrong:
 Execution failed for task ':app:mergeDebugJavaResource'.
+Caused by: org.gradle.internal.resolve.ModuleVersionNotFoundException: Could not find com.hszn:cutsdk:1.0.0.
+Ask Gemini
+
 > Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
    > Could not find com.hszn:cutsdk:1.0.0.
      Searched in the following locations:
@@ -1216,9 +1279,6 @@ Execution failed for task ':app:mergeDebugJavaResource'.
          project :app > project :library
 
 * Try:
-Caused by: org.gradle.internal.resolve.ModuleVersionNotFoundException: Could not find com.hszn:cutsdk:1.0.0.
-Ask Gemini
-
 > Run with --info or --debug option to get more log output.
 > Run with --scan to get full insights.
 
@@ -1271,6 +1331,9 @@ Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfigurat
 	at org.gradle.api.internal.file.CompositeFileCollection.lambda$visitContents$0(CompositeFileCollection.java:119)
 	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:64)
 	at org.gradle.api.internal.file.collections.UnpackingVisitor.add(UnpackingVisitor.java:89)
+Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfiguration$ArtifactResolveException: Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
+Ask Gemini
+
 	at org.gradle.api.internal.file.DefaultFileCollectionFactory$ResolvingFileCollection.visitChildren(DefaultFileCollectionFactory.java:333)
 	at org.gradle.api.internal.file.CompositeFileCollection.visitContents(CompositeFileCollection.java:119)
 	at org.gradle.api.internal.file.AbstractFileCollection.visitStructure(AbstractFileCollection.java:375)
@@ -1314,9 +1377,6 @@ Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfigurat
 	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:37)
 	at org.gradle.internal.execution.steps.IdentityCacheStep.execute(IdentityCacheStep.java:27)
 	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:44)
-Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfiguration$ArtifactResolveException: Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
-Ask Gemini
-
 	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:33)
 	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:76)
 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:139)
@@ -1361,6 +1421,9 @@ Required by:
     project :app > project :library
 
 ==============================================================================
+Caused by: org.gradle.internal.resolve.ModuleVersionNotFoundException: Could not find com.hszn:cutsdk:1.0.0.
+Ask Gemini
+
 
 10: Task failed with an exception.
 -----------
@@ -1383,9 +1446,6 @@ Execution failed for task ':app:mergeDebugNativeLibs'.
 * Exception is:
 org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':app:mergeDebugNativeLibs'.
 	at org.gradle.api.internal.tasks.execution.CatchExceptionTaskExecuter.execute(CatchExceptionTaskExecuter.java:38)
-Caused by: org.gradle.internal.resolve.ModuleVersionNotFoundException: Could not find com.hszn:cutsdk:1.0.0.
-Ask Gemini
-
 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.executeTask(EventFiringTaskExecuter.java:77)
 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:55)
 	at org.gradle.api.internal.tasks.execution.EventFiringTaskExecuter$1.call(EventFiringTaskExecuter.java:52)
@@ -1460,9 +1520,6 @@ Caused by: org.gradle.internal.execution.fingerprint.InputFingerprinter$InputFil
 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:293)
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:417)
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:339)
-Caused by: org.gradle.internal.execution.fingerprint.InputFingerprinter$InputFileFingerprintingException: Cannot fingerprint input file property 'externalLibNativeLibs': Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
-Ask Gemini
-
 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
 	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
@@ -1471,6 +1528,9 @@ Ask Gemini
 Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfiguration$ArtifactResolveException: Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
 	at org.gradle.api.internal.artifacts.configurations.DefaultConfiguration.rethrowFailure(DefaultConfiguration.java:1524)
 	at org.gradle.api.internal.artifacts.configurations.DefaultConfiguration.access$3700(DefaultConfiguration.java:159)
+Caused by: org.gradle.internal.execution.fingerprint.InputFingerprinter$InputFileFingerprintingException: Cannot fingerprint input file property 'externalLibNativeLibs': Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
+Ask Gemini
+
 	at org.gradle.api.internal.artifacts.configurations.DefaultConfiguration$DefaultResolutionHost.rethrowFailure(DefaultConfiguration.java:2174)
 	at org.gradle.api.internal.artifacts.configurations.DefaultConfiguration$ConfigurationFileCollection.visitContents(DefaultConfiguration.java:1496)
 	at org.gradle.api.internal.file.AbstractFileCollection.getFiles(AbstractFileCollection.java:129)
@@ -1507,17 +1567,17 @@ Searched in the following locations:
   - file:/C:/Users/bqsbq/.m2/repository/com/hszn/cutsdk/1.0.0/cutsdk-1.0.0.pom
   - https://jitpack.io/com/hszn/cutsdk/1.0.0/cutsdk-1.0.0.pom
 Required by:
+Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfiguration$ArtifactResolveException: Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
+Ask Gemini
+
     project :app > project :library
 
 ==============================================================================
 
 * Get more help at https://help.gradle.org
 
-BUILD FAILED in 5s
-34 actionable tasks: 10 executed, 24 up-to-date
-Caused by: org.gradle.api.internal.artifacts.ivyservice.DefaultLenientConfiguration$ArtifactResolveException: Could not resolve all files for configuration ':app:debugRuntimeClasspath'.
-Ask Gemini
-
+BUILD FAILED in 3s
+35 actionable tasks: 11 executed, 24 up-to-date
 Caused by: org.gradle.internal.resolve.ModuleVersionNotFoundException: Could not find com.hszn:cutsdk:1.0.0.
 Ask Gemini
 

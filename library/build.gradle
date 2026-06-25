@@ -43,6 +43,29 @@ afterEvaluate {
     }
 }
 
+// ===== 配置阶段自动安装 CutSDK.aar 到本地 Maven（依赖解析前执行）=====
+def m2Repo = file("${System.getProperty('user.home')}/.m2/repository/com/hszn/cutsdk/1.0.0")
+def pomFile = file("${m2Repo}/cutsdk-1.0.0.pom")
+if (!pomFile.exists()) {
+    def aarFile = file('libs/CutSDK.aar')
+    if (aarFile.exists()) {
+        println '>>> 安装 CutSDK.aar 到本地 Maven...'
+        m2Repo.mkdirs()
+        copy { from aarFile; into m2Repo; rename { 'cutsdk-1.0.0.aar' } }
+        pomFile.text = '<?xml version="1.0" encoding="UTF-8"?>\n' +
+            '<project xmlns="http://maven.apache.org/POM/4.0.0"\n' +
+            '         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"\n' +
+            '         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">\n' +
+            '  <modelVersion>4.0.0</modelVersion>\n' +
+            '  <groupId>com.hszn</groupId>\n' +
+            '  <artifactId>cutsdk</artifactId>\n' +
+            '  <version>1.0.0</version>\n' +
+            '  <packaging>aar</packaging>\n' +
+            '</project>\n'
+        println '>>> CutSDK 安装完成'
+    }
+}
+
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
 
@@ -50,11 +73,6 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.9'
 
     // 打印切割一体机 SDK（MainSDK，USB HID）
-    // 本地开发：useLocalAar=true → 直接用 libs/CutSDK.aar
-    // JitPack  ：before_install 安装到 mavenLocal → maven 坐标
-    if (findProperty('useLocalAar') == 'true') {
-        api files('libs/CutSDK.aar')
-    } else {
-        api 'com.hszn:cutsdk:1.0.0'
-    }
+    // 统一走 mavenLocal 坐标，配置阶段自动从 libs/CutSDK.aar 安装
+    api 'com.hszn:cutsdk:1.0.0'
 }
